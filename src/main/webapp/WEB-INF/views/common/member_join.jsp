@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <div id="container">
-<img src="${img}/mainimg.jpg"/><br />
+<img src="${path.img}/mainimg.jpg"/><br />
 <form id="join_form" action="member_detail.jsp" method="get">
 	
 	<fieldset>
@@ -67,7 +67,7 @@ function addAlert(){
 		return false;
 	}
 	var form = document.getElementById('join_form');
-	form.action = "${ctx}/member.do";
+	form.action = "${path.ctx}/member.do";
 	form.method = "post";
 	return true;
 }

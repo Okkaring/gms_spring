@@ -14,26 +14,26 @@ public class MemberController {
 	@RequestMapping("/add")
 	public String memberAdd() {
 		logger.info("*** /member/add 진입!");
-		return "member/member_add";
+		return "auth:member/member_add.tiles";
 	}
 	@RequestMapping("/list")
 	public String memberList() {
 		logger.info("*** /member/List 진입!");
-		return "member/member_list";
+		return "auth:member/member_list.tiles";
 	}
 	@RequestMapping("/detail")
 	public String memberDetail() {
 		logger.info("*** /member/detail 진입!");
-		return "member/member_detail";
+		return "auth:member/member_detail.tiles";
 	}
 	@RequestMapping("/update")
 	public String memberUpdate() {
 		logger.info("*** /member/update 진입!");
-		return "member/member_update";
+		return "auth:member/member_update.tiles";
 	}
 	@RequestMapping("/delete")
 	public String memberDelete() {
 		logger.info("*** /member/delete 진입!");
-		return "member/member_delete";
+		return "auth:member/member_delete.tiles";
 	}
 }

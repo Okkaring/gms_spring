@@ -51,4 +51,3 @@
 			</tr>
 		</table>
 	</div>
-<jsp:include page="../common/footer.jsp"/>

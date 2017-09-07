@@ -3,4 +3,3 @@
 <div id="container">
 <h1>여기는 삭제 페이지 입니다.</h1>
 </div>
-<jsp:include page="../common/footer.jsp"/>

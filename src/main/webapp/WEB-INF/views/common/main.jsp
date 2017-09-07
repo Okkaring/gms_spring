@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<html>
 <div id="container" >
 	<div class="row">
 		<div class="col-sm-4">
@@ -28,12 +29,10 @@
 					<li><a>BOARD DETAIL</a></li>
 					<li><a>BOARD DELETE</a></li>
 				</ul>
+			</div>
 		</div>
 	</div>
-</div>
-<jsp:include page="../common/footer.jsp"/>
 </html>
-
 <script>
 	app.main.init();
 	app.grade.init();

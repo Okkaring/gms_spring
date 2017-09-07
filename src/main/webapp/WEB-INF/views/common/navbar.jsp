@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<script src="${js}/app.js"></script>
+<script src="${path.js}/app.js"></script>
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">

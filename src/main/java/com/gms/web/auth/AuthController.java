@@ -17,11 +17,11 @@ public class AuthController{
 	@RequestMapping("/login")
 	public String login() {
 		logger.info("*** AuthController login 진입!");
-		return "common/main";
+		return "auth:common/main.tiles";
 	}
 	@RequestMapping("/logout")
 	public String logout() {
 		logger.info("*** AuthController logout 진입!");
-		return "common/login";
+		return "public:common/login.tiles";
 	}
 }

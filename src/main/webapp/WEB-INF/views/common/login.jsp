@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>member_head</title>
-	<link rel="stylesheet" href="${css}/member.css" />
+	<link rel="stylesheet" href="${path.css}/member.css" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -18,7 +18,7 @@
 <div id="container">
 	
 	<form id="login_box" name="login_box" >
-		<img src ="<%= application.getContextPath() %>/resources/img/mainimg.jpg" alt=""><br />
+		<img src ="${path.img}/mainimg.jpg" alt=""><br />
 		<span id="login_id_txt">ID</span><br>
 		<input type="text" id="login_id" name="login_id" placeholder="※ID는 숫자 포함 8자 이내"/><br>
 		<span id="login_pass_txt">Password</span><br>

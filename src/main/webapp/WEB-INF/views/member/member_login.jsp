@@ -8,4 +8,3 @@
 	<button id="login_btn"  onclick="window.location.href='../index.jsp'">LOGIN</button>
 	<button id="cancle_btn" onclick="window.location.href='../index.jsp'">MAIN</button>
 </div>	
-<jsp:include page="../common/footer.jsp"/>

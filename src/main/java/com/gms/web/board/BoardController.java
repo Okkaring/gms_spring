@@ -14,21 +14,21 @@ public class BoardController {
 	@RequestMapping("/write")
 	public String boardWrite() {
 		logger.info("board write 진입!!");
-		return "board/board_write";
+		return "auth:board/board_write.tiles";
 	}
 	@RequestMapping("/list")
 	public String boardList() {
 		logger.info("board list 진입!!");
-		return "board/board_list";
+		return "auth:board/board_list.tiles";
 	}
 	@RequestMapping("/detail")
 	public String boardDetail() {
 		logger.info("board detail 진입!!");
-		return "board/board_detail";
+		return "auth:board/board_detail.tiles";
 	}
 	@RequestMapping("/delete")
 	public String boardDelete() {
 		logger.info("board delete 진입!!");
-		return "board/board_delete";
+		return "auth:board/board_delete.tiles";
 	}
 }

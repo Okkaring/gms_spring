@@ -1,9 +1,7 @@
-
 var app=app || {};
-
 app.path=(function(){
 	var init=function(ctx){
-		alert('ctx? : '+ ctx);
+		//alert('ctx? : '+ ctx);
 		app.session.init(ctx);
 		onCreate();
 	};
@@ -41,7 +39,7 @@ app.session=(function(){
 		sessionStorage.setItem('js', ctx + '/resources/js');
 		sessionStorage.setItem('img', ctx + '/resources/img');
 		sessionStorage.setItem('css', ctx + '/resources/css');
-		alert('app.session 진입 : '+ ctx);
+		//alert('app.session 진입 : '+ ctx);
 };
 	var getPath=function(x){
 		return sessionStorage.getItem(x);
@@ -169,7 +167,7 @@ app.navbar=(function(){
 	var onCreate=function(){
 		setContentView();
 		$('#navbar').on('click',function(){
-			alert('main으로 가시겠습니까?');
+			//alert('main으로 가시겠습니까?');
 			app.controller.moveTo('auth','login');
 		});
 		$('.dropdown-menu a').eq(0).on('click',function(){
@@ -240,11 +238,12 @@ app.member=(function(){
 			sessionStorage.setItem('phone',$('#stu_phone').val());
 			sessionStorage.setItem('email',$('#stu_email').val());
 			
-			alert('Value: ' +'\n'+
+/*			alert('Value: ' +'\n'+
 				$('#stu_id').val() +'\n'+
 				$('#stu_phone').val()+'\n'+
 				$('#stu_email').val()+'\n'+
 				$('#stu_title').val());
+*/			
 			app.controller.moveTo('member','member_update');
 			});
 		};
@@ -260,7 +259,7 @@ app.controller=(function(){
 	var init=function(){
 	};
 	var moveTo=function(dir,page){
-		alert('moveTo: dir: '+ app.path.ctx()+'///page: /'+page);
+		//alert('moveTo: dir: '+ app.path.ctx()+'///page: /'+page);
 		location.href=app.path.ctx()+'/'+dir+'/'+page;
 	};
 	var logout=function(ctx,page){
