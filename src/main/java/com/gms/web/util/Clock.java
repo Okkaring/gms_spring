@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 @Component 
 public class Clock {
 	public String getNow(){
-		return new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss").format(new Date());
+		
+		return new SimpleDateFormat("yyyy년년 MM월 dd일 a hh:mm:ss").format(new Date());
 	}
 }
