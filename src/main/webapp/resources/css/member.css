@@ -1,0 +1,45 @@
+@CHARSET "UTF-8";
+@IMPORT url("common.css");
+
+/* LOGIN */
+#login_id{display: inline-block; width: 100px; text-align: left; font-weight: bold; font-style: italic;}
+#login_pass{display: inline-block; width: 100px; text-align: left; font-weight: bold; font-style: italic;}
+#mark_st{color:#d2d2d2; background-color: #ffffff; font-size: 8px;}
+
+/* BUTTON */
+#login_btn{color:white; background-color: blue;}
+#cancle_btn{color:white; background-color: red;}
+#join_yes-btn{color:white; background-color: blue;}
+#join_no-btn{color:white; background-color: red;}
+
+/* ADD */
+#join_form{text-align: left; width: 670px; margin: 0 auto;}
+#legend_set{text-align: center; font-size: 30px; font-weight: bold;}
+#add_id{display: inline-block; width: 100px; text-align: left; font-weight: bold;}
+#add_pass{display: inline-block; width: 100px; text-align: left; font-weight: bold;}
+#add_bday{display: inline-block; width: 100px; text-align: left; font-weight: bold;}
+#add_email{display: inline-block; width: 100px;text-align: left; font-weight: bold;}
+#add_name{display: inline-block; width: 100px; text-align: left; font-weight: bold;}
+
+/* INDEX */
+#index-tab{margin: 0 auto; text-decoration: none;}
+#index-tab-tr>th{width: 35%;border: 2px solid black;font-weight: bold;}
+#index-tab-tr>td{width: 35%;border: 2px solid black; font-weight: bold;}
+.index-ul{list-style-type: none;text-align: center;padding: 10px;}
+.index-ul>li{font-weight: bold;text-align: left;border: 1px dotted yellow;}
+.index-ul>li>a{text-decoration: none;}
+
+/* MEMBER LIST */
+#member_list_tab{width: 90%;border: 2px solid black; font-weight: bold;margin: 0 auto;}
+#member_list_tab th{background-color: yellow;font-weight: bold;border-bottom: 1px solid red; height:20px;}
+#member_list_tab td{text-align: center;font-weight: bold;border-bottom: 1px solid gray; height:20px;}
+
+/* MEMBER_SEARCH */
+#member_search_box{margin:0 auto;font-weight: bold;width: 300px;}
+
+/* MEMBER_DETAIL_TAB */
+#member_detail_tab{width: 50%;margin: 0 auto;}
+#member_detail_tab tr{font-weight: bold;margin: 0 auto;}
+#member_detail_tab td{height:50px;border: 2px solid black; font-weight: bold;margin: 0 auto;}
+.content_width{margin:0 auto;width: 25%;}
+

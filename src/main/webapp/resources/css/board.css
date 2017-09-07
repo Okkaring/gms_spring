@@ -1,0 +1,19 @@
+@CHARSET "UTF-8";
+@IMPORT url("common.css");
+
+#index-tab{
+	width:1200px;
+	text-decoration: none;
+}
+#index-tab-tr{	
+	border: 2px solid black; 
+	font-weight: bold;}
+S 
+ .board_data{	
+ 	border: 2px solid black;
+ 	text-align:center;
+	font-weight: bold;	
+} 
+
+/* BOARD WRITE */
+#wrapper{background-image: url("../img/bgg.jpg");}

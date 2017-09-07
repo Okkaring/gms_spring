@@ -1,0 +1,57 @@
+@CHARSET "UTF-8";
+
+/* DIV */
+#wrapper{width: 100%;}
+#container{padding-top: 10px;height: 550px;text-align: center;}
+/* TABLE */
+table{width: 1200px;}
+/* FOOTER */
+footer{width: 100%;font-size: 5px;text-align: center;}
+.container-fluid{position: relative;}
+.navbar_st{position: absolute; right:20px; top:15px; color: white;}
+
+/* TITLE */
+#title{
+	text-align: center;
+	font-size: 80px;
+	text-decoration: none;
+	color: black;
+	margin:1 auto;
+}
+#title_line{border: solid 1px red;}
+.gms-mark-style{color:#d2d2d2; background-color: #ffffff; font-size: 8px;}
+
+
+/* TEXT */
+.gms-text-center{text-align: center;}
+.gms-border-black{border: 2px solid black;}
+.gms-text-deco-none{text-decoration: none;}
+.gms-list-none{list-style-type: none;}
+.gms-inline-block{display: inline-block;}
+
+/* WIDTH */
+
+.gms-witdth-5pro{width: 5%;}
+.gms-witdth-15pro{width: 15%;}
+.gms-witdth-20pro{width: 20%;}
+.gms-witdth-35pro{width: 35%;}
+.gms-witdth-40pro{width: 40%;}
+.gms-witdth-100pro{width: 100%;}
+
+
+/* COLOR */
+.gms-bgcolor-blue{background-color: blue;}
+
+/* LINK COLOR */
+
+/* unvisited link */
+a:link {color: black;}
+/* visited link */
+
+/* mouse over link */
+a:hover {color: red;}
+/* selected link */
+a:active { color: blue;}
+
+#clock{text-align: center;font-size: 8px;}
+
