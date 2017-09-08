@@ -23,6 +23,7 @@
 		<el-version>1.0</el-version>
 		<mybatis-version>3.4.1</mybatis-version>
 		<mybatis-spring-version>1.3.0</mybatis-spring-version>
+		<commons-dbcp-version>1.4</commons-dbcp-version>
 	</properties>
 	
 	<dependencies>
@@ -206,6 +207,13 @@
 		    <artifactId>mybatis-spring</artifactId>
 		    <version>${mybatis-spring-version}</version>
 		</dependency>
+ 		<!-- commons-dbcp -->
+          <dependency>
+              <groupId>commons-dbcp</groupId>
+              <artifactId>commons-dbcp</artifactId>
+              <version>${commons-dbcp-version}</version>
+          </dependency>
+
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>

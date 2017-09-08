@@ -1,8 +1,8 @@
-package com.gms.web.grade;
+package com.gms.web.mapper;
 
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class GradeDAO {
+public class GradeMapper {
 
 }
