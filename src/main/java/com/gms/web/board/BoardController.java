@@ -11,21 +11,7 @@ import com.gms.web.auth.HomeController;
 @RequestMapping("/board")
 public class BoardController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	@RequestMapping("/write")
-	public String boardWrite() {
-		logger.info("board write 진입!!");
-		return "auth:board/board_write.tiles";
-	}
-	@RequestMapping("/list")
-	public String boardList() {
-		logger.info("board list 진입!!");
-		return "auth:board/board_list.tiles";
-	}
-	@RequestMapping("/detail")
-	public String boardDetail() {
-		logger.info("board detail 진입!!");
-		return "auth:board/board_detail.tiles";
-	}
+	
 	@RequestMapping("/delete")
 	public String boardDelete() {
 		logger.info("board delete 진입!!");

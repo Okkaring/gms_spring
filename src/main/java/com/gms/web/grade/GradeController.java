@@ -11,24 +11,7 @@ import com.gms.web.auth.HomeController;
 @RequestMapping("/grade")
 public class GradeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	@RequestMapping("/add")
-	public String gradeAdd() {
-		logger.info("***grade add 진입!");
-		
-		return "auth:grade/grade_add.tiles";
-	}
-	@RequestMapping("/list")
-	public String gradeList() {
-		logger.info("***grade list 진입!");
-		
-		return "auth:grade/grade_list.tiles";
-	}
-	@RequestMapping("/detail")
-	public String gradeDetail() {
-		logger.info("***grade detail 진입!");
-		
-		return "auth:grade/grade_detail.tiles";
-	}
+	
 	@RequestMapping("/delete")
 	public String gradeDelete() {
 		logger.info("***grade delete 진입!");

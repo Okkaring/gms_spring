@@ -44,6 +44,7 @@ VALUES(
 );
 
 --SELECT COUNT(*) AS count FROM Member;
+--SELECT * FROM Member;
 	
 --UPDATE Member SET profile='ko.jpg' WHERE member_id='ko';
 

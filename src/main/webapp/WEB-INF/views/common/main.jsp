@@ -32,6 +32,8 @@
 			</div>
 		</div>
 	</div>
+	<div style="text-align: center;width: 100%; height: 150px;">
+	<h4 style="font-size: 20px;color:red;">${message}! ${user}님 환영해~</h4></div>
 </html>
 <script>
 	app.main.init();
