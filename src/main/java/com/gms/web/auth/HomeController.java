@@ -3,8 +3,6 @@ package com.gms.web.auth;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.servlet.http.HttpSession;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -24,6 +22,6 @@ public class HomeController {
 		logger.info("Welcome home! The client locale is {}.");
 		model.addAttribute("serverTime", new SimpleDateFormat("yyyy년 MM월 dd일 E요일 HH:mm:ss").format(new Date()));
 		model.addAttribute("path",PathFactory.create());
-		return "public:common/home.tiles";
+		return "index";
 	}
 }
