@@ -30,7 +30,7 @@
 		<td><fmt:formatNumber value="${i.num}" pattern="." /></td>
 		<td> ${i.id} </td>
 		<td> ${i.ssn} </td>
-		<td> <a onclick="detailStudent('${i.id}')">${i.name}</a></td>
+		<td> <a onclick="app.controller.detailStudent('${i.id}')">${i.name}</a></td>
 		<td> ${i.phone} </td>
 		<td> ${i.email} </td>
 		<td> ${i.title}  </td>
@@ -38,7 +38,7 @@
 		<td>
 		<a onclick = "updateStudent('${i.id}')">수정</a>
 		/
-		<a onclick = "deleteStudent('${i.id}')">삭제 </a>
+		<a onclick = "app.controller.deleteStudent('${i.id}')">삭제 </a>
 		</td>
 	</tr>
 	</c:forEach>

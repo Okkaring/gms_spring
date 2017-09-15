@@ -10,9 +10,9 @@
           </div>
           <div class="col-md-9 col-xs-12 col-sm-6 col-lg-9">
               <div class="" style="border-bottom:1px solid black">
-                <span style="font-size: 50px">${requestScope.student.name} (${requestScope.student.id})</span>
+                <span style="font-size: 50px">${student.name} (${student.id})</span>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <button id="updateBtn">정보수정</button>
+                <button id="updateBtn" onclick="app.controller.moveTo('member','member_update')">정보수정</button>
               </div>
                 <hr>
               <div class="col-md-6">  
@@ -20,35 +20,35 @@
                <li>
                 	<p>
                 		<span class="glyphicon glyphicon-credit-card one" style="width:50px;">
-                			${requestScope.student.id}
+                			${student.id}
                 		</span>
-                		<input id="stu_id" type="hidden" value="${requestScope.student.id}" />
+                		<input id="stu_id" type="hidden" value="${student.id}" />
                 	 </p>
                 </li>
                 <li>
                 	<p>
                 		<span class="glyphicon glyphicon-credit-card one" style="width:50px;">
                 		</span>
-                			${requestScope.student.num}
+                			${student.num}
                 	 </p>
                 </li>
                 <li> 
                 	<p>
                 		<span class="glyphicon glyphicon-envelope one" style="width:50px;">
                 		</span>
-                			${requestScope.student.email}
-                			<input id="stu_email" type="hidden" value="${requestScope.student.email}" />
+                			${student.email}
+                			<input id="stu_email" type="hidden" value="${student.email}" />
                 	  </p>
                 </li>
                 <li><p><span class="glyphicon glyphicon-bold" style="width:50px;"></span>
-                			${requestScope.student.ssn}
+                			${student.ssn}
                 	  </p>
                 </li>
                 <li>  <p>
                 			<span class="glyphicon glyphicon-earphone one" style="width:50px;">
                 			</span>
-                			${requestScope.student.phone}
-                			<input id="stu_phone" type="hidden" value="${requestScope.student.phone}" />
+                			${student.phone}
+                			<input id="stu_phone" type="hidden" value="${student.phone}" />
                 		</p>
                 </li>
               </ul>
@@ -56,12 +56,12 @@
               <div class="col-md-6">  
                 <p>
                 	<span class="glyphicon glyphicon-calendar one" style="width:50px;"></span>
-                	${requestScope.student.regdate}
+                	${student.regdate}
                 </p>
                 <p>
                 	<span class="glyphicon glyphicon-blackboard" style="width:50px;"></span>
-                	${requestScope.student.title}
-                	<input id="stu_title" type="hidden" name="action" value="${requestScope.student.title}" />
+                	${student.title}
+                	<input id="stu_title" type="hidden" name="action" value="${student.title}" />
                 </p>
                 <%-- <div class="col-sm-5 col-xs-6 tital " >Gender:</div>
                 <div class="col-sm-7 col-xs-6 ">${requestScope.student.ssn}</div>
@@ -122,7 +122,5 @@
     </div>
 </div>
 
-<script>
-//memberDetail.init();
-</script>     
+   
      

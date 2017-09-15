@@ -16,6 +16,7 @@ SHOW TABLES;
 --member_id,name,pw,ssn,regdate,
 --phone,email,major_id,profile
 --*********************************
+
 CREATE TABLE
 	Member
 (
@@ -146,4 +147,30 @@ VALUES
 	'고동을 청춘의 무엇을 창공에 그들은 그리하였는가?', 0,NOW()
 );
 
-
+create view student (
+   id, pw, name, ssn, 
+   title, regdate, phone, email
+   )
+as
+(
+   select 
+      a.member_id id,
+     a.pw pw,
+      a.name name, 
+      rpad(substring(a.ssn,1,8),14,'*') ssn,
+      group_concat(s.title) title,
+      DATE_FORMAT(a.regdate, '%Y-%m-%d') regdate,
+      a.phone phone, 
+      a.email email
+   from
+      member a
+      left join major m 
+         on a.member_id like m.member_id
+      left join subject s 
+         on m.subj_id like s.subj_id
+      group by 
+         a.member_id, a. name, a.ssn, 
+         a.regdate, a.phone, a.email
+      order by regdate
+);
+drop view student;

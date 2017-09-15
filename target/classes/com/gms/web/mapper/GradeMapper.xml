@@ -2,8 +2,27 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
 <mapper namespace="com.gms.web.mapper.GradeMapper">
-  <select id="selectById" resultType="com.gms.web.grade.GradeDTO">
+  <insert id="insertMajor" parameterType="java.util.List">
+		INSERT INTO Major(
+			major_id,
+			title,
+			subj_id,
+			member_id
+		)
+		VALUES
+		<foreach collection="list" item="i" separator=" , ">
+		(
+			FLOOR(5 + (RAND() * 99999)),
+			#{i.title},
+			#{i.subjId},
+			#{i.id}
+		)
+		</foreach>
+	</insert>
+	
+	<select id="selectById" resultType="com.gms.web.grade.GradeDTO">
     select * from Member where grade_seq = #{gradeSeq}
-  </select>
+  	</select>
 </mapper>

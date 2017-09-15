@@ -1,8 +1,12 @@
 package com.gms.web.mapper;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
-@Repository
-public class GradeMapper {
+import com.gms.web.grade.MajorDTO;
 
+@Repository
+public interface GradeMapper {
+	public int insertMajor(List<MajorDTO> list);
 }

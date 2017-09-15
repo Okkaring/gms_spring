@@ -4,9 +4,7 @@
 <div id="container">
 <img src="${path.img}/mainimg.jpg"/><br />
 
-
-
-	<form id="join_form" onsubmit="memberAdd()">
+	<form id="join_form" name="join_form">
 		<fieldset>
 		<legend id="legend_set">ADD ARTICLE</legend><br />
 		
@@ -33,7 +31,7 @@
 	 	<input name="name" type="text" value="이길동" placeholder="이름"><br><br/>
 	 	
 	 	<h2>MAJOR</h2>
-	 	<select name="major">
+	 	<select name="title">
 	 		<option value="computer" selected>컴퓨터공학과</option>
 	 		<option value="economics">경제학</option>
 	 		<option value="tourism">관광학</option>
@@ -56,3 +54,6 @@
 		</fieldset>
 	</form> 
 </div>
+<script>
+app.member.init();
+</script>

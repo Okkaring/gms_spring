@@ -6,27 +6,36 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.gms.web.command.CommandDTO;
 import com.gms.web.grade.MajorDTO;
+import com.gms.web.grade.SubjectDTO;
+import com.gms.web.mapper.GradeMapper;
 import com.gms.web.mapper.MemberMapper;
 
 @Service
 public class MemberServiceImpl implements MemberService{
 	private static final Logger logger = LoggerFactory.getLogger(MemberServiceImpl.class);
 	@Autowired MemberMapper mapper;
+	@Autowired GradeMapper gMapper;
 	@Autowired MemberDTO bean;
 	@Autowired CommandDTO cmd;
-	@Override
-	@SuppressWarnings("unchecked")
-	public String addMember(Map<?,?> map) {
-		System.out.println("member service 진입");
-		MemberDTO m = (MemberDTO)map.get("member");
-		System.out.println("넘어온 회원의 이름: "+ m.toString());
-		List<MajorDTO> list =(List<MajorDTO>)map.get("major");
-		System.out.println("넘어온 수강과목:"+list);
-		return null;
+	@Autowired MajorDTO major;
+	
+	
+	@Override @Transactional
+	public int addMember(Map<?,?> map) {
+		logger.info("***MemberServiceImpl 진입 :");
+		bean= (MemberDTO) map.get("bean");
+		@SuppressWarnings("unchecked")
+		List<MajorDTO> list = (List<MajorDTO>)map.get("list");
+		System.out.println("id####"+bean.getId());
+		System.out.println("List####"+list);
+		mapper.insert(bean);
+		gMapper.insertMajor(list);
+		int rs = 0;
+		return rs;
 	}
 	@Override
 	public List<?> list(CommandDTO cmd) {
@@ -42,7 +51,8 @@ public class MemberServiceImpl implements MemberService{
 	
 	@Override
 	public StudentDTO findById(CommandDTO cmd) {
-		return null;
+		logger.info("***MemberServiceImpl findByName getSearch"+cmd.getSearch());
+		return mapper.selectById(cmd);
 	}
 
 	@Override
@@ -52,13 +62,15 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public String modify(MemberDTO bean) {
-		return null;
+	public int modify(MemberDTO bean) {
+		logger.info("**MemberServiceImpl modify 진입: "+bean);
+		return mapper.update(bean);
 	}
 
 	@Override
-	public String remove(CommandDTO cmd) {
-		return	null;
+	public int remove(CommandDTO cmd) {
+		logger.info("***cmd에 담은 아이디는?"+cmd.getSearch());
+		return mapper.delete(cmd);
 	}
 	@Override
 	public Map<String, Object> login(CommandDTO cmd) {
@@ -87,4 +99,5 @@ public class MemberServiceImpl implements MemberService{
 		map.put("user",bean);
 		return map;
 	}
+
 }

@@ -1,0 +1,69 @@
+동적 SQL 처리하는 방법
+<OGNL 기반의 표현식>
+1. if
+2. choose (when, otherwise)
+3. trim (where, set)
+4. foreach
+
+if
+동적 SQL 에서 가장 공통적으로 사용되는 것으로 where의 일부로 포함될 수 있다. 예를 들면:
+
+<select id="find"
+	parameterType="com.gms.web.Command"
+    resultType="com.gms.web.Domain">
+	SELECT * FROM BLOG 
+	WHERE state = ‘ACTIVE’ 
+	<if test="title != null">
+	AND title like #{title}
+	</if>
+</select>
+
+이 구문은 선택적으로 문자열 검색 기능을 제공할 것이다.
+만약에 title 값이 없다면 모든 active 상태의 Blog 가 리턴될 것이다. 하지만 title 값이 있다면 그 값과 비슷한 데이터를 찾게 될 것이다.
+
+<select id="find" 
+	parameterType="com.gms.web.Command"
+    resultType="com.gms.web.Domain">
+	SELECT * FROM BLOG WHERE state = ‘ACTIVE’ 
+	<if test="title != null">
+	AND title like #{title}
+	</if>
+	<if test="author != null and author.name != null">
+	AND author_name like #{author.name}
+	</if>
+</select>
+
+choose, when, otherwise
+<select id="find" 
+     resultType="com.gms.web.Domain">
+  SELECT * FROM BLOG WHERE state = ‘ACTIVE’
+  <choose>
+    <when test="title != null">
+      AND title like #{title}
+    </when>
+    <when test="author != null and author.name != null">
+      AND author_name like #{author.name}
+    </when>
+    <otherwise>
+      AND featured = 1
+    </otherwise>
+  </choose>
+</select>
+
+foreach
+동적 SQL 에서 공통적으로 필요한 것은 collection 에 대해 반복처리를 하는 것이다. 종종 IN 조건을 사용하게 된다.
+예를들면
+
+<select id="selectPostIn" resultType="domain.blog.Post">
+  SELECT *
+  FROM POST P
+  WHERE ID in
+  <foreach item="item" index="index" collection="list"
+      open="(" separator="," close=")">
+        #{item}
+  </foreach></select>
+
+
+
+
+

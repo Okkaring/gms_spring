@@ -52,7 +52,7 @@
       	</ul>
       	</li>
     </ul>
-    <span class="navbar_st">${sessionScope.user.name} &nbsp; <a id="logout">로그아웃</a></span>
+    <span class="navbar_st"> ${user.name} &nbsp; <a id="logout">로그아웃</a></span>
   </div>
 </nav>
 <script>

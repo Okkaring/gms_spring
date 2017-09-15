@@ -227,34 +227,31 @@ app.navbar=(function(){
 app.member=(function(){
 		var init=function(){
 			onCreate();
+			insert();
 		};
 		var onCreate=function(){
 			setContentView();
 			$('#updateBtn').on('click',function(){
-				
-			sessionStorage.setItem('id',$('#stu_id').val());
-			sessionStorage.setItem('phone',$('#stu_phone').val());
-			sessionStorage.setItem('email',$('#stu_email').val());
-			
-/*			alert('Value: ' +'\n'+
-				$('#stu_id').val() +'\n'+
-				$('#stu_phone').val()+'\n'+
-				$('#stu_email').val()+'\n'+
-				$('#stu_title').val());
-*/			
 			app.controller.moveTo('member','member_update');
 			});
 		};
 		var setContentView=function(){
-			//alert('app.member: // memberDetail');
-			
 		};
 		var list=function(pageNumber){
 			location.href=app.path.ctx()+'/member/list/' + pageNumber;
 		};
+		var insert=function(){
+			$('#join_yes-btn').on('click',function(){
+				alert('insertBTN/admit 클릭');
+				$('#join_form').attr('action',app.path.ctx()+"/member/add");
+		    	$('#join_form').attr('method','post');
+		    	return true;
+				});
+		   };
 		return {
 			init : init,
-			list : list
+			list : list,
+			insert : insert
 		};
 })();
 
@@ -275,21 +272,25 @@ app.controller=(function(){
 	};
 	
     var searchStudent=function (){
-	      alert('검색버튼 클릭');
+    	alert('검색버튼 클릭');
 	       var search=$('#search').val();
 	       location.href=app.path.ctx()+"/member/search/"+search;   
 	     };
-	var updateStudent=function(id,email){
-		alert('수정할 id : ' +id);
-		location.href=app.ctx()+"/member.do?action=update&page=member_update&id="+id+"&email="+email;
+	var updateStudent=function(){
+		$('#confirmBtn').on('click',function(){
+			alert('업데이트 버튼 클릭');
+			$('#update_form').attr('action',app.path.ctx()+"/student/update");
+	    	$('#update_form').attr('method','post');
+	    	return true;
+			});
 	};
 	var deleteStudent=function (id){
 		alert('삭제할 id : ' + id);
-		location.href=app.ctx()+"/member/member_delete/member_list";
+		location.href=app.path.ctx()+"/member/delete/"+id;
 	};
 	var detailStudent=function (id){
 		alert('조회할 id : ' + id);
-		location.href=app.path.ctx()+"/member/member_detail";
+		location.href=app.path.ctx()+"/member/detail/"+id;
 	};
     var studentInfo=function (){
   	  var id='id',
@@ -303,7 +304,8 @@ app.controller=(function(){
   	  sessionStorage.setItem(name,name_val);    
   	  sessionStorage.setItem(email,email_val);    
     };
-   
+  
+    
 	return{
 	init : init,
 	moveTo : moveTo,
