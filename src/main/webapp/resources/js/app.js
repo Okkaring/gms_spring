@@ -303,9 +303,7 @@ app.controller=(function(){
   	  sessionStorage.setItem(id,id_val);    
   	  sessionStorage.setItem(name,name_val);    
   	  sessionStorage.setItem(email,email_val);    
-    };
-  
-    
+    };  
 	return{
 	init : init,
 	moveTo : moveTo,
