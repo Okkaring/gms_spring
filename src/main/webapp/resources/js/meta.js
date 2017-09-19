@@ -12,26 +12,31 @@ meta.common = (()=>{
 	return {init : init};
 })();
 meta.index = (()=>{
-	var $wrapper,$navbar,$container,ctx,img,js,css;
+	var $wrapper, $navbar, $container, ctx, img, js, css, algo;
 	var init = ()=>{
 		onCreate();
+		js=$$('j');
+		algo=js+'/algo.js';
 		};
-   var onCreate = ()=>{
-	   setContentView();
-	   $('#btn').on('click',()=>{
-		   $('#container').empty();
-		   //meta.auth.init();
-		   meta.ui.navbar();
-		   meta.navbar.init();
-		   meta.ui.arithmetic();
+	var onCreate = ()=>{
+		setContentView();
+		$('#btn').on('click',()=>{
+			$('#container').empty();
+		    //meta.auth.init();
+		    meta.ui.navbar();
+		    meta.navbar.init();
+		    meta.ui.arithmetic();
 	    $('#result_btn').click(()=>{
-	    	$('#result_box').text('결과: '+ meta.algo.arithmetic(
-				   					$('#start_box').val(),
-				   					$('#end_box').val()
-				   					));
+	    	$.getScript(algo,(x1,x2)=>{
+	    		$('#result_box').text(
+	    				'결과: '+ series.arithmetic(
+	   					$('#start_box').val(),
+	   					$('#end_box').val()
+	   					));
+	    		});
 	    	});
 	    });
-	   };
+};
    var setContentView = ()=>{
 	   $container = $('#container');
 	   img=$$('i');
@@ -52,48 +57,6 @@ meta.index = (()=>{
 	   };
 	return {init:init};
 })();
-meta.algo={
-		arithmetic : (s,e)=>{
-		var i=0, start=s*1, end=e*1, sum=0;
-		for(i=start;i<=end;i++){
-			sum+=i;
-			};
-		return sum;
-		},
-		switchSeries : ()=>{
-        var i=0, sum=0, start=1, end=100, opcode=1;
-        for(i=start;i<=end;i++){
-           sum = sum + (opcode * i);
-           opcode = opcode * -1;
-        }
-        return sum;
-		},
-	diffrenceSeries : (e)=>{
-		var i=0, e=e*1, j=0, sum=0;
-		for(i=1;i<=e;i++) {
-			sum+=j;
-		}
-		return sum;
-	},
-	factorial :()=>{
-		var i=0, j=1, sum=0;
-		for(i=0;i<10;i++){
-			j=j*(i+1);
-			sum=sum+j;
-		}			
-		return sum;
-	},
-	fibonacci :()=>{
-		var i=0, a=1, b=1, c=0, sum=2;
-		for(i=2;i<20;i++){
-			c=a+b;
-			sum=sum+c;
-			a=b;
-			b=c;
-		}			
-		return sum;
-	}
-};
 meta.auth=(()=>{
 	var $wrapper,ctx,img,js,css;
 	var init = ()=>{
@@ -136,8 +99,11 @@ meta.auth=(()=>{
 	return{init:init};
 })();
 meta.navbar = (()=>{
+	var algo,js;
 	var init = ()=>{
 		onCreate();
+		js = $$('j');
+		algo = js+'/algo.js';
 		};
 	var onCreate = ()=>{
 		setContentView();
@@ -182,11 +148,13 @@ meta.navbar = (()=>{
 			$('#container').empty();
 			meta.ui.arithmetic();
 			$('#result_btn').click(() => {
-				$('#result_box').text(
-						'결과: '+ meta.algo.arithmetic(
-								$('#start_box').val(),
-								$('#end_box').val()
-								));
+				$.getScript(algo,(x1,x2)=>{
+					$('#result_box').text(
+							'결과: '+ series.arithmetic(
+									$('#start_box').val(),
+									$('#end_box').val()
+									));
+					});
 				});
 			});
 		$('#switchBtn').click(() => {
@@ -198,30 +166,31 @@ meta.navbar = (()=>{
 			$('#end_box').val('20');
 			$('#start_box,#end_box').removeAttr('placeholder');
 			$('#start_box, #end_box').attr('readonly', true);
+			
 			$('#result_btn').click(()=>{
-				$('#result_box').text(
-						'결과: ' + meta.algo.switchSeries(
-								$('#start_box').val(),
-								$('#end_box').val()
-								));
+				$.getScript(algo,()=>{
+					$('#result_box').text(
+							'결과: ' + series.switchSeries());
+					});
 				});
 			});
 		$('#diffrenceBtn').click(()=>{
 			alert('계차수열 클릭');
 			$('#container').empty();
 			meta.ui.arithmetic();
-			$('h1').html('1~입력값 합:[계차 수열]');
-			$('#start_box').attr('placeholder','시작값은 1입니다.');
+			$('h1').html('1~10 합 :[계차수열]');
+			$('#start_box').val('1').attr('readonly','true');
 			$('#end_box').attr('placeholder','수열의 끝 항 입력 : ');
-			$('#start_box').attr('readonly', true);
 			$('#result_btn').click(()=>{
-				$('#result_box').text(
-						'결과: ' + meta.algo.diffrenceSeries(
-								$('#end_box').val()
-								));
+				$.getScript(algo,(x1)=>{
+					$('#result_box').text(
+							'결과: ' + series.diffrenceSeries(
+									$('#end_box').val()
+									));
+					});
 				});
 			});
-		$('#facBtn').on('click',function(){
+		$('#facBtn').click(()=>{
 			alert('팩토리얼 클릭');
 			$('#container').empty();
 			meta.ui.arithmetic();
@@ -229,18 +198,26 @@ meta.navbar = (()=>{
 			$('#start_box').val('1').attr('readonly','true');
 			$('#end_box').val('10').attr('readonly','true');
 			$('#result_btn').click(()=>{
-				$('#result_box').text('결과: ' +meta.algo.factorial());
+				$.getScript(algo,()=>{
+					$('#result_box').text('결과: ' +series.factorial());
+					});
 				});
+				
 			});
-		$('#fiboBtn').on('click',function(){
+		$('#fiboBtn').click(()=>{
 			alert('피보나치 클릭');
 			$('#container').empty();
 			meta.ui.arithmetic();
 			$('h1').html('1~20 합 :[피보나치]');
-			$('#start_box').val('1').attr('readonly','true');
+			$('#start_box').attr('placeholder','수열의 첫 항 입력 : ');
 			$('#end_box').val('20').attr('readonly','true');
 			$('#result_btn').click(()=>{
-				$('#result_box').text('결과: ' + meta.algo.fibonacci());
+				$.getScript(algo,(x1)=>{
+					$('#result_box').text(
+							'결과: ' + series.fibonacci(
+									$('#start_box').val()
+									));
+					});
 				});
 			});
 		};
