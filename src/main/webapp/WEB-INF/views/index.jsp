@@ -15,9 +15,8 @@
 <body>
 <div id="wrapper">
 	<div id="navbar"></div>
-	<div id="container">
-		</div>
-	</div>
+	<div id="container"></div>
+</div>
 </body>
 
 <script>
