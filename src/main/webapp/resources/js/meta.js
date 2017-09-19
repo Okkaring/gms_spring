@@ -3,7 +3,6 @@ meta.common = (()=>{
 	var init = x=>{
 		onCreate();
 		meta.session.init(x);
-		//alert('session 후 : '+$$('x'));
 		meta.index.init();
 	};
 	var onCreate = ()=>{
@@ -16,9 +15,8 @@ meta.index = (()=>{
 	var $wrapper,$navbar,$container,ctx,img,js,css;
 	var init = ()=>{
 		onCreate();
-		//meta.ui.init();
 		};
-   var onCreate=()=>{
+   var onCreate = ()=>{
 	   setContentView();
 	   $('#btn').on('click',()=>{
 		   $('#container').empty();
@@ -27,72 +25,67 @@ meta.index = (()=>{
 		   meta.navbar.init();
 		   meta.ui.arithmetic();
 	    $('#result_btn').click(()=>{
-		    $('#result_box').text('결과: '+ meta.algo.arithmetic(
+	    	$('#result_box').text('결과: '+ meta.algo.arithmetic(
 				   					$('#start_box').val(),
 				   					$('#end_box').val()
 				   					));
-			   });
-		   });
+	    	});
+	    });
 	   };
    var setContentView = ()=>{
-		  $container = $('#container');
-		  img=$$('i');
-	      var $image = $('<img/>',
-	         {
-	            id:'loading',
-	            src:img+'/loading.gif'
-	         }
-	      );
-	      $container.append($image);
-	      var $btn=$('<input/>',
-	    		  {
-	    	  		id :'btn',
-	    	  		type : 'button',
-	    	  		value :'버어튼'
-	      		});
-	      $container.append($btn);
+	   $container = $('#container');
+	   img=$$('i');
+	   var $image = $('<img/>',
+			   {
+		   id:'loading',
+		   src:img+'/loading.gif'
+		   }
+	   );
+	   $container.append($image);
+	   var $btn=$('<input/>',
+			   {
+		   id :'btn',
+		   type : 'button',
+		   value :'버어튼'
+			   });
+	   $container.append($btn);
 	   };
-	   return {init:init};
+	return {init:init};
 })();
 meta.algo={
-	arithmetic : (s,e)=>{
-		var start=s*1,end=e*1,sum=0;
-		for(var i=start;i<=end;i++){
+		arithmetic : (s,e)=>{
+		var i=0, start=s*1, end=e*1, sum=0;
+		for(i=start;i<=end;i++){
 			sum+=i;
-		};
+			};
 		return sum;
-	},
-	switchSeries : ()=>{
-        var sum = 0,start = 1,end = 100,opcode = 1;
-        for(var i=start;i<=end;i++){
+		},
+		switchSeries : ()=>{
+        var i=0, sum=0, start=1, end=100, opcode=1;
+        for(i=start;i<=end;i++){
            sum = sum + (opcode * i);
            opcode = opcode * -1;
         }
         return sum;
-     },
+		},
 	diffrenceSeries : (e)=>{
-		/*등비수열 1+2+4+7+11+16+22+…로 증가하는 수열 (do~while)*/
-		var i=0,e=e*1,j=0,k=0;
+		var i=0, e=e*1, j=0, sum=0;
 		for(i=1;i<=e;i++) {
-			j=j+i;
-			k+=j;
+			sum+=j;
 		}
-		return k;
+		return sum;
 	},
 	factorial :()=>{
-		var sum = 0;
-		var j=1;
-		for(var i=0;i<10;i++){
+		var i=0, j=1, sum=0;
+		for(i=0;i<10;i++){
 			j=j*(i+1);
 			sum=sum+j;
 		}			
 		return sum;
 	},
 	fibonacci :()=>{
-		var a=1, b=1;
-		var sum=2;
-		var c=0;
-		for(var i=2;i<20;i++){
+		var i=0, a=1, b=1, c=0, sum=2;
+		for(i=2;i<20;i++){
 			c=a+b;
 			sum=sum+c;
 			a=b;
@@ -101,20 +94,20 @@ meta.algo={
 		return sum;
 	}
 };
-meta.auth=(() => {
+meta.auth=(()=>{
 	var $wrapper,ctx,img,js,css;
-	var init = () => {
+	var init = ()=>{
 		onCreate();
 		};
-	var onCreate = () => {
+	var onCreate = ()=>{
 		setContentView();
 		};
-	var setContentView = () => {
+	var setContentView = ()=>{
 		$wrapper=$('#wrapper');
 		img=$$('i');
 		loginView();
 		};
-	var loginView = () => {
+	var loginView = ()=>{
 		var ui=	'<div id="wrapper">'
 				+	'<div id="login_box">'
 				+		'<img src="'+img+'/mainimg.jpg"/><br /><br /><br />'
@@ -123,32 +116,30 @@ meta.auth=(() => {
 				+		'<span >패스워드:	</span>'
 				+		'<input id="login_pass" type="password"/> <br />'
 				+	'</div>'
-				+'</d0iv>';
+				+'</div>';
 		$wrapper.append(ui);
 		$('#login_input').after(meta.comp.input(
-			{
-				type :'button',
-				id : 'login_button',
-				value : '로그인'
-			}
-		));
+				{
+					type :'button',
+					id : 'login_button',
+					value : '로그인'
+				}
+				));
 		$('#login_pass').after(meta.comp.input(
-			{
-				type : 'button',
-				id : 'cancel_btn',
-				value : '취소'
-				
-			}
-		));
+				{
+					type : 'button',
+					id : 'cancel_btn',
+					value : '취소'
+				}));
 		};
 	var joinView = () => {};
 	return{init:init};
 })();
-meta.navbar = (() => {
-	var init = () => {
+meta.navbar = (()=>{
+	var init = ()=>{
 		onCreate();
-	};
-	var onCreate = () => {
+		};
+	var onCreate = ()=>{
 		setContentView();
 		$('.dropdown-menu a').eq(0).on('click',function(){
 			app.controller.moveTo('member','member_add');
@@ -186,51 +177,51 @@ meta.navbar = (() => {
 		$('.dropdown-menu a').eq(11).on('click',function(){
 			app.controller.moveTo('board','board_delete');
 		});
-	   $('#arithBtn').click(() => {
-		   alert('등차수열 클릭');
-		   $('#container').empty();
-		   meta.ui.arithmetic();
-		   $('#result_btn').click(() => {
-			   $('#result_box').text(
-					   '결과: '+ meta.algo.arithmetic(
-							   $('#start_box').val(),
-							   $('#end_box').val()
-							   ));
-			   });
-		   });
-	   $('#switchBtn').click(() => {
-		  alert('스위치수열 클릭');
-		  $('#container').empty();
-		  meta.ui.arithmetic();
-		  $('h1').html('1~100 합: [스위치 수열]');
-		  $('#start_box').val('1');
-		  $('#end_box').val('20');
-		  $('#start_box,#end_box').removeAttr('placeholder');
-	      $('#start_box, #end_box').attr('readonly', true);
-		  $('#result_btn').click(()=>{
-			  $('#result_box').text(
-					  '결과: ' + meta.algo.switchSeries(
-							  $('#start_box').val(),
-							  $('#end_box').val()
-							  ));
-			  });
-		  });
-	   $('#diffrenceBtn').click(()=>{
-		   alert('계차수열 클릭');
-		   $('#container').empty();
-		   meta.ui.arithmetic();
-		   $('h1').html('1~입력값 합:[계차 수열]');
-		   $('#start_box').attr('placeholder','시작값은 1입니다.');
-		   $('#end_box').attr('placeholder','수열의 끝 항 입력 : ');
-	       $('#start_box').attr('readonly', true);
-		   $('#result_btn').click(()=>{
-			   $('#result_box').text(
-					   '결과: ' + meta.algo.diffrenceSeries(
-							   $('#end_box').val()
-							   ));
-			   });
-		   });
-	   $('#facBtn').on('click',function(){
+		$('#arithBtn').click(() => {
+			alert('등차수열 클릭');
+			$('#container').empty();
+			meta.ui.arithmetic();
+			$('#result_btn').click(() => {
+				$('#result_box').text(
+						'결과: '+ meta.algo.arithmetic(
+								$('#start_box').val(),
+								$('#end_box').val()
+								));
+				});
+			});
+		$('#switchBtn').click(() => {
+			alert('스위치수열 클릭');
+			$('#container').empty();
+			meta.ui.arithmetic();
+			$('h1').html('1~100 합: [스위치 수열]');
+			$('#start_box').val('1');
+			$('#end_box').val('20');
+			$('#start_box,#end_box').removeAttr('placeholder');
+			$('#start_box, #end_box').attr('readonly', true);
+			$('#result_btn').click(()=>{
+				$('#result_box').text(
+						'결과: ' + meta.algo.switchSeries(
+								$('#start_box').val(),
+								$('#end_box').val()
+								));
+				});
+			});
+		$('#diffrenceBtn').click(()=>{
+			alert('계차수열 클릭');
+			$('#container').empty();
+			meta.ui.arithmetic();
+			$('h1').html('1~입력값 합:[계차 수열]');
+			$('#start_box').attr('placeholder','시작값은 1입니다.');
+			$('#end_box').attr('placeholder','수열의 끝 항 입력 : ');
+			$('#start_box').attr('readonly', true);
+			$('#result_btn').click(()=>{
+				$('#result_box').text(
+						'결과: ' + meta.algo.diffrenceSeries(
+								$('#end_box').val()
+								));
+				});
+			});
+		$('#facBtn').on('click',function(){
 			alert('팩토리얼 클릭');
 			$('#container').empty();
 			meta.ui.arithmetic();
@@ -239,9 +230,9 @@ meta.navbar = (() => {
 			$('#end_box').val('10').attr('readonly','true');
 			$('#result_btn').click(()=>{
 				$('#result_box').text('결과: ' +meta.algo.factorial());
+				});
 			});
-		});
-	   $('#fiboBtn').on('click',function(){
+		$('#fiboBtn').on('click',function(){
 			alert('피보나치 클릭');
 			$('#container').empty();
 			meta.ui.arithmetic();
@@ -250,9 +241,9 @@ meta.navbar = (() => {
 			$('#end_box').val('20').attr('readonly','true');
 			$('#result_btn').click(()=>{
 				$('#result_box').text('결과: ' + meta.algo.fibonacci());
+				});
 			});
-		});
-	   };
+		};
 	var setContentView = ()=>{
 		var $u1 = $("#navbar_ul_stu");
 		var $u2 = $("#navbar_ul_grade");
@@ -262,100 +253,99 @@ meta.navbar = (() => {
 		$u1.addClass("dropdown-menu");
 		$u2.addClass("dropdown-menu");
 		$u3.addClass("dropdown-menu");
-	};
+		};
 	return {
 	init : init
 	};
 })();
-meta.ui = (() => {
-	var $wrapper,ctx,img,js,css;
-	var init = () => {
-		  $wrapper = $('#wrapper');
-		  ctx = $$('x');
-		  img = $$('i');
-	};
-	var navbar = () => {
+meta.ui = (()=>{
+	var $wrapper, ctx, img, js, css;
+	var init = ()=>{
+		$wrapper = $('#wrapper');
+		ctx = $$('x');
+		img = $$('i');
+		};
+	var navbar = ()=>{
 		$('#navbar').html(
-					'<nav class="navbar navbar-inverse">'
-					+'<div class="container-fluid">'
-				    +'<div class="navbar-header">'
-				    +'<a class="navbar-brand" href="#">BOMBABYCHU</a>'  
-				    +'</div>'
+				'<nav class="navbar navbar-inverse">'
+				+'<div class="container-fluid">'
+				+'<div class="navbar-header">'
+				+'<a class="navbar-brand" href="#">BOMBABYCHU</a>'  
+				+'</div>'
 				    
-				    +'<ul class="nav navbar-nav" class="dropdown-menu">'
-				    +'<li class="active"><a id = "navbar"><span class="glyphicon glyphicon-home"></span>&nbsp;Main</a></li>'  
+				+'<ul class="nav navbar-nav" class="dropdown-menu">'
+				+'<li class="active"><a id = "navbar"><span class="glyphicon glyphicon-home"></span>&nbsp;Main</a></li>'  
 				        
-				    +'<li class="dropdown">'  
-				    +'<a href="#" class="dropdown-toggle"'  	
-				    +'data-toggle="dropdown" role="button"'  	
-				    +'aria-haspopup="true"'  	
-				    +'aria-expanded="false">회원 관리<span class="caret"></span></a>'
+				+'<li class="dropdown">'  
+				+'<a href="#" class="dropdown-toggle"'  	
+				+'data-toggle="dropdown" role="button"'  	
+				+'aria-haspopup="true"'  	
+				+'aria-expanded="false">회원 관리<span class="caret"></span></a>'
 				      	
-				    +'<ul id="navbar_ul_stu" class="dropdown-menu">'	
-				    +'<li><a>학생 추가</a></li>'
-				    +'<li><a>학생 목록</a></li>'
-				    +'<li><a>학생 조회</a></li>'
-				    +'<li><a>학생 삭제</a></li>'
-				    +'</ul>'
-				    +'</li>'
+				+'<ul id="navbar_ul_stu" class="dropdown-menu">'	
+				+'<li><a>학생 추가</a></li>'
+				+'<li><a>학생 목록</a></li>'
+				+'<li><a>학생 조회</a></li>'
+				+'<li><a>학생 삭제</a></li>'
+				+'</ul>'
+				+'</li>'
 				      	
-				    +'<li class="dropdown">'
-				    +'<a href="#" class="dropdown-toggle"'
-				    +'data-toggle="dropdown" role="button"'
-				    +'aria-haspopup="true"'
-				    +'aria-expanded="false">성적 관리<span class="caret"></span></a>'
+				+'<li class="dropdown">'
+				+'<a href="#" class="dropdown-toggle"'
+				+'data-toggle="dropdown" role="button"'
+				+'aria-haspopup="true"'
+				+'aria-expanded="false">성적 관리<span class="caret"></span></a>'
 				      	
-				    +'<ul id="navbar_ul_grade" class="dropdown-menu">'	
-				    +'<li><a>성적 추가</a></li>'
-				    +'<li><a>성적 목록</a></li>'
-				    +'<li><a>성적 조회</a></li>'
-				    +'<li><a>성적 삭제</a></li>'
-				    +'</ul>'	
-				    +'</li>'	
+				+'<ul id="navbar_ul_grade" class="dropdown-menu">'	
+				+'<li><a>성적 추가</a></li>'
+				+'<li><a>성적 목록</a></li>'
+				+'<li><a>성적 조회</a></li>'
+				+'<li><a>성적 삭제</a></li>'
+				+'</ul>'	
+				+'</li>'	
 				      	
-				    +'<li class="dropdown">'
-				    +'<a href="#" class="dropdown-toggle"'
-				    +'data-toggle="dropdown" role="button"'
-				    +'aria-haspopup="true"'
-				    +'aria-expanded="false">게시판 관리<span class="caret"></span></a>'
+				+'<li class="dropdown">'
+				+'<a href="#" class="dropdown-toggle"'
+				+'data-toggle="dropdown" role="button"'
+				+'aria-haspopup="true"'
+				+'aria-expanded="false">게시판 관리<span class="caret"></span></a>'
 				      	
-				    +'<ul id="navbar_ul_board" class="dropdown-menu">'
-				    +'<li><a>게시판 추가</a></li>'
-				    +'<li><a>게시판 목록</a></li>'
-				    +'<li><a>게시판 조회</a></li>'
-				    +'<li><a>게시판 삭제</a></li>'
-				    +'</ul>'
-					+'</li>'
+				+'<ul id="navbar_ul_board" class="dropdown-menu">'
+				+'<li><a>게시판 추가</a></li>'
+				+'<li><a>게시판 목록</a></li>'
+				+'<li><a>게시판 조회</a></li>'
+				+'<li><a>게시판 삭제</a></li>'
+				+'</ul>'
+				+'</li>'
 					
-				    +'<li class="dropdown">'
-				    +'<a href="#" class="dropdown-toggle"'
-				    +'data-toggle="dropdown" role="button"'
-				    +'aria-haspopup="true"'
-				    +'aria-expanded="false">수 열<span class="caret"></span></a>'
+				+'<li class="dropdown">'
+				+'<a href="#" class="dropdown-toggle"'
+				+'data-toggle="dropdown" role="button"'
+				+'aria-haspopup="true"'
+				+'aria-expanded="false">수 열<span class="caret"></span></a>'
 				      	
-				    +'<ul id="navbar_ul_board" class="dropdown-menu">'
-				    +'<li><a id="arithBtn">등차수열</a></li>'
-				    +'<li><a id="switchBtn">스위치수열</a></li>'
-				    +'<li><a id="diffrenceBtn">계차 수열</a></li>'
-				    +'<li><a id="facBtn">팩토리얼</a></li>'
-				    +'<li><a id="fiboBtn">피보나치</a></li>'
-				    +'</ul>'
-					+'</li>'
-					
-					+'</ul>'
-					+'<span class="navbar_st"> ${user.name} &nbsp; <a id="logout">로그아웃</a></span>'
-					+'</div>'
-					+'</nav>'
+				+'<ul id="navbar_ul_board" class="dropdown-menu">'
+				+'<li><a id="arithBtn">등차수열</a></li>'
+				+'<li><a id="switchBtn">스위치수열</a></li>'
+				+'<li><a id="diffrenceBtn">계차수열</a></li>'
+				+'<li><a id="facBtn">팩토리얼</a></li>'
+				+'<li><a id="fiboBtn">피보나치</a></li>'
+				+'</ul>'
+				+'</li>'
+				
+				+'</ul>'
+				+'<span class="navbar_st"> ${user.name} &nbsp; <a id="logout">로그아웃</a></span>'
+				+'</div>'
+				+'</nav>'
 		);
 	};
-	
-	var arithmetic = () => {
+	var arithmetic = ()=>{
 		var content = '<div id="content">'
-					+'<h1>시작값부터 끝값까지 [등차 수열]의 합</h1>'
-					+'<span id="start_txt">시작값: &nbsp;&nbsp;</span>'
-					+'<br/><span id="end_txt">끝   값:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>'
-					+'<div id="result_box">'
-					;
+				+'<h1>시작값부터 끝값까지 [등차 수열]의 합</h1>'
+				+'<span id="start_txt">시작값: &nbsp;&nbsp;</span>'
+				+'<br/><span id="end_txt">끝   값:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>'
+				+'<div id="result_box">'
+				;
 		$('#container').append(content);
 		$('#start_txt').after(meta.comp.input(
 				{
@@ -386,14 +376,11 @@ meta.ui = (() => {
 		};
 })();
 meta.comp={
-		input:(json) => {
+		input:(json)=>{
 			return $('<input/>',json);
-		}
+			}
 };
-	
-
-meta.session=
-	{
+meta.session={
 	 init : x => {
 			sessionStorage.setItem('x',x);
 			sessionStorage.setItem('j',x + '/resources/js');
@@ -403,6 +390,5 @@ meta.session=
 	getPath : x => {
 			return sessionStorage.getItem(x);
 		}
-	};
+};
 var $$ = x => {return meta.session.getPath(x);};
-
