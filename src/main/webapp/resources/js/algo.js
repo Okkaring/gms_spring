@@ -43,3 +43,64 @@ var series={
 			return sum;
 		}
 }
+var sort={
+		// 1. selection
+		selection :(x)=>{
+			console.log('start : '+x);
+	        var temp=0, min=0;
+	        for(var i=0; i<x.length-1; i++){
+	             min = i;
+	             for(var j=i+1; j<=x.length-1; j++){
+	                if(x[min]*1>x[j]*1){
+	                  min = j;
+	                };
+	             };
+	             temp = x[min];
+	             x[min]=x[i];
+	             x[i]=temp;
+	          };
+	        return x;
+	    },
+		// 2. bubble
+		bubble : (x)=>{
+			console.log('start : '+x);
+			var i=0,j=0,k=0;
+			for(i=0;i<x.length;i++){
+				for(j=0;j<x.length;j++){
+					if(x[j]*1 > x[j+1]*1){
+						k = x[j];
+						x[j] = x[j+1];
+						x[j+1] = k;
+					}
+				}
+			}
+			console.log('end : ' + x);
+			return x;
+		},
+		// 3. insertion
+		insertion : (x)=>{
+			var arr=x, a=0, b=0;
+			for(var i=0;i<arr.length;i++){
+				for(var j=0;j<arr.length-1;i++){
+					if(a>b){
+						c=arr[i];
+						arr[i]=arr[i+1];
+						arr[i+1]=c;
+					}
+				}
+			}
+		},
+		// 4. ranking
+		ranking : (x)=>{
+			var arr=x, a=0, b=0;
+			for(var i=0;i<arr.length;i++){
+				for(var j=0;j<arr.length-1;i++){
+					if(a>b){
+						c=arr[i];
+						arr[i]=arr[i+1];
+						arr[i+1]=c;
+					}
+				}
+			}
+		}
+}
