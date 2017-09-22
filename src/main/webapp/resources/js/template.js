@@ -1,3 +1,16 @@
+var compUI={
+	br    :()=>{return $('<br/>');},
+	div   : x=>{return $('<div/>',{id:x});},
+	h1    : x=>{return $('<h1/>',{id:x});},
+	span  : x=>{return $('<span/>',{id:x});},
+	iTxt  : x=>{return $('<input/>',{id:x, type:'text'});},
+	aBtn  : x=>{return $('<a>',{href:'#', role: 'button',id:x});},
+	iBtn  : x=>{return $('<input/>',{id:x, type: 'button'});},
+	image : (x,y)=>{return $('<img/>',{id:x, src:y});},
+	input : (x,y)=>{return $('<input/>',{id:x, type:y});},
+	select : x=>{return $('<select/>',{id:x,name:x});},
+	option : ()=>{return $('<option/>');}
+};
 var introUI = {
 	login : i=>{
 		return '<div id="container">'
@@ -14,14 +27,14 @@ var introUI = {
 	navbar : ()=>{
 		return '<nav class="navbar navbar-inverse">'
 				+'<div class="container-fluid">'
-				+'<div class="navbar-header">'
-				+'<a class="navbar-brand" href="#">BOMBABYCHU</a>'  
+				+'<div class="navbar-header" style="width:30%;margin:0 auto;">'
+				+'<a class="navbar-brand" href="#">GMS Project</a>'  
 				+'</div>'
 				    
-				+'<ul class="nav navbar-nav" class="dropdown-menu">'
+				+'<ul class="nav navbar-nav" class="dropdown-menu" style="width:50%;margin:0 auto;">'
 				+'<li class="active"><a id = "navbar"><span class="glyphicon glyphicon-home"></span>&nbsp;Main</a></li>'  
 				        
-/*				+'<li class="dropdown">'  
+				+'<li class="dropdown">'  
 				+'<a href="#" class="dropdown-toggle"'  	
 				+'data-toggle="dropdown" role="button"'  	
 				+'aria-haspopup="true"'  	
@@ -62,7 +75,7 @@ var introUI = {
 				+'<li><a>게시판 삭제</a></li>'
 				+'</ul>'
 				+'</li>'
-*/	
+	
 				+'<li class="dropdown">'
 				+'<a href="#" class="dropdown-toggle"'
 				+'data-toggle="dropdown" role="button"'
@@ -125,13 +138,79 @@ var introUI = {
 				;
 	}
 };
-var compUI={
-	div : (x)=>{return $('<div/>',{id:x});},
-	image : (x,y)=>{return $('<img/>',{id:x, src:y});},
-	input : (x,y)=>{return $('<input/>',{id:x, type:y});},
-	h1 : x=>{return $('<h1/>',{id:x});},
-	span : x=>{return $('<span/>',{id:x});}
+var bbsUI={
+	tbl : ()=>{
+		var searchBox='<div style="width:80%; margin:100px auto;">'
+				+'<div id="board" style="width:70%;margin:0 auto;">'
+				+'<div id="search-box" style="width:100%;margin:0 auto;text-align:center;">'
+				+'<select id="search-opt" name="searchOpt" class="form-control" style="width:100px; float:left; margin-right:20px">'
+				+'<option value="writer">작성자</option>'
+				+'<option value="title">제목</option>'
+				+'</select>'
+				+'<div class="input-group" style="width:50%; float:left; margin-right:20px;">'
+				+'<input id="search-txt" type="text" class="form-control" style="width:100%" name="searchTxt" placeholder="작성자 또는 제목을  검색 ++">'
+				+'</div>'
+				+'<input class="btn btn-primary" style="width:100px" name="search" type="submit"  value="검색!"/>'
+				+'<input type="hidden" name="action" value="search"/>'
+				+'<input type="hidden" name="pageName" value="list" />'
+				+'<input type="hidden" name="pageNumber" value="1" />'
+				+'</div>'
+				+'<div style="width:80%; margin:15px auto;" >'
+				+'<span> 총 게시글 수: </span>'
+				+'<label id="write-btn"></label>'
+				+'</div>'
+		var tbl= '<table id="tbl" class="table table-hover" style="width:90%;margin:0 auto;text-align:center;">'
+				+'<tr class="hanbit-table tr">'
+		var a= [{width:'5%',txt:'N°'},
+				{width:'20%',txt:'제 목'},
+				{width:'35%',txt:'내 용'},
+				{width:'15%',txt:'작성자'},
+				{width:'15%',txt:'등록일'},
+				{width:'10%',txt:'조회수'}];
+		$.each(a,(i,j)=>{
+			tbl+='<th style=width : '+j.width
+				+'; text-align: center;">'+j.txt+'</th>'
+		});
+		tbl+='</tr></thead><tbody id="tbody">';	
+		tbl+='</tbody></table></div>'
+			return tbl;
+		
+		/*
+				+'<tr>'
+				+'<td>112</td>'
+				+'<td>테스트</td>'
+				+'<td>테스트</td>'
+				+'<td>테스트</td>'
+				+'<td>테스트</td>'
+				+'<td>테스트</td>'
+				+'</tr>'
+				+'</table>'
+				+'</div>'
+				
+				+'<nav aria-label="Page navigation" style="width:350px; margin:0 auto;">'
+				+'<ul class="pagination">'
+				+'<li><a onclick=""><span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span></a></li>'
+				+'<li>'
+				+'<a aria-label="Previous">'
+				+'<span aria-hidden="true">&laquo;</span>'
+				+'</a>'
+				+'</li>'
+				+'<li class="active"><a href="#" >1</a></li>'
+				+'<li><a href="#" >2</a></li>'
+				+'<li><a href="#" >3</a></li>'
+				+'<li><a href="#" >4</a></li>'
+				+'<li><a href="#" >5</a></li>'
+				+'<li>'
+				+'<a onclick="" aria-label="Next">'
+				+'<span aria-hidden="true">&raquo;</span>'
+				+'</a>'
+				+'</li>'
+				+'<li><a><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></a></li>'
+				+'</ul>'
+				+'</nav>';*/
+		}
 };
+
 var algoUI = {
 		series : ()=>{
 			return '<div id="content" style="width: 400px; margin:0 auto;margin-top: 100px;">'

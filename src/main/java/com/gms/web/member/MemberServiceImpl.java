@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.gms.web.command.CommandDTO;
 import com.gms.web.grade.MajorDTO;
-import com.gms.web.grade.SubjectDTO;
 import com.gms.web.mapper.GradeMapper;
 import com.gms.web.mapper.MemberMapper;
 

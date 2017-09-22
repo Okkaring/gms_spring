@@ -19,7 +19,6 @@
 </div>
 </body>
 
-
 <script>
 meta.common.init('${path.ctx}');
 </script>

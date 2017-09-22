@@ -17,37 +17,6 @@
 				<td class="board_data gms-witdtd-15pro">REGDATE</td>
 				<td class="board_data gms-witdtd-5pro">HITCOUNT</td>
 			</tr>
-			<tr>
-				<td class="board_data gms-witdtd-5pro">NO</td>
-				<td class="board_data gms-witdtd-20pro">TITLE</td>
-				<td class="board_data gms-witdtd-40pro">CONTENT</td>
-				<td class="board_data gms-witdtd-15pro">WRITER</td>
-				<td class="board_data gms-witdtd-15pro">REGDATE</td>
-				<td class="board_data gms-witdtd-5pro">HITCOUNT</td>
-			</tr>
-			<tr>
-				<td class="board_data gms-witdtd-5pro">NO</td>
-				<td class="board_data gms-witdtd-20pro">TITLE</td>
-				<td class="board_data gms-witdtd-40pro">CONTENT</td>
-				<td class="board_data gms-witdtd-15pro">WRITER</td>
-				<td class="board_data gms-witdtd-15pro">REGDATE</td>
-				<td class="board_data gms-witdtd-5pro">HITCOUNT</td>
-			</tr>
-			<tr>
-				<td class="board_data gms-witdtd-5pro">NO</td>
-				<td class="board_data gms-witdtd-20pro">TITLE</td>
-				<td class="board_data gms-witdtd-40pro">CONTENT</td>
-				<td class="board_data gms-witdtd-15pro">WRITER</td>
-				<td class="board_data gms-witdtd-15pro">REGDATE</td>
-				<td class="board_data gms-witdtd-5pro">HITCOUNT</td>
-			</tr>
-			<tr>
-				<td class="board_data gms-witdtd-5pro">NO</td>
-				<td class="board_data gms-witdtd-20pro">TITLE</td>
-				<td class="board_data gms-witdtd-40pro">CONTENT</td>
-				<td class="board_data gms-witdtd-15pro">WRITER</td>
-				<td class="board_data gms-witdtd-15pro">REGDATE</td>
-				<td class="board_data gms-witdtd-5pro">HITCOUNT</td>
-			</tr>
+
 		</table>
 	</div>
