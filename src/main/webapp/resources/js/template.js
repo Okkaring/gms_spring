@@ -161,7 +161,7 @@ var bbsUI={
 				+'</div>'
 		var tbl= '<table id="tbl" class="table table-hover" style="width:90%;margin:0 auto;text-align:center;">'
 				+'<tr class="hanbit-table tr">'
-		var a= [{width:'5%',txt:'N°'},
+		var a=  [{width:'5%',txt:'N°'},
 				{width:'20%',txt:'제 목'},
 				{width:'35%',txt:'내 용'},
 				{width:'15%',txt:'작성자'},

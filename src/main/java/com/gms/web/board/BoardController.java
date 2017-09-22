@@ -39,23 +39,21 @@ public class BoardController {
 		switch(cate) {
 		case "board" :
 			cmd=null;
-	/*		listService =(x)-> {
+			listService =(x)-> {
 					return boardMapper.selectSome(cmd);
 			};
+			System.out.println("겨어어어엉어어어엉ㄹ과고가ㅗ가ㅗ각"+listService);
+			map.put("result", "success");
 			map.put("list", listService.execute(cmd));
-	*/
-			
-			map.put("msg", null);
 			break;
 			
-			
-	/*	case "grade" : 
+		case "grade" : 
 			cmd=null;
 			listService =(x)-> {
 					return gradeMapper.selectSome(cmd);
 			};
 			map.put("list", listService.execute(cmd));
-			break;*/
+			break;
 		};
 		return map;
 	}

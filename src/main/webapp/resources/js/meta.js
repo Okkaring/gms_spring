@@ -66,13 +66,13 @@ meta.index = (()=>{
 				alert('게시판 가기 ');
 		/*-----------------------------------BoardPage UI & Event--------------------------------*/
 			var url = ctx+'/get/board/list';
-			$.getJSON(url,x=>{
-				alert('x msg is '+ x.msg);
+			$.getJSON(url,data=>{
+				alert('data msg is '+ data.msg);
 				
 				$navbar.append(introUI.navbar());
 				//meta.navbar.init();
 				
-	            var a=[
+/*	            var a=[
 	               {
 	                  a:1,
 	                  b:'헬로ddd',
@@ -113,18 +113,19 @@ meta.index = (()=>{
 	                  e:'2017-09-22',
 	                  f:50
 	               }
-	            ];
+	            ];*/
 	            var tr='';
-	            $.each(a,function(i,j){
-	               tr += '<tr style="border: 1px solid black; height:25px;text-align: center;">'
-	               +'<td>'+j.a+'</td>'
-	               +'<td>'+j.b+'</td>'
-	               +'<td>'+j.c+'</td>'
-	               +'<td>'+j.d+'</td>'
-	               +'<td>'+j.e+'</td>'
-	               +'<td>'+j.f+'</td>'
-	            +'</tr>';
-	            }); 
+	            alert('결과 ㅣ: '+ data.result);
+	            $.each(data.list,(i,j)=>{
+	            	tr += '<tr style="border: 1px solid black; height:25px;text-align: center;">'
+	            		   +'<td>'+j.articleSeq+'</td>'
+	            		   +'<td>'+j.title+'</td>'
+	            		   +'<td>'+j.content+'</td>'
+			               +'<td>'+j.id+'</td>'
+			               +'<td>'+j.regdate+'</td>'
+			               +'<td>'+j.hitcount+'</td>'
+			            +'</tr>';
+			            }); 		
 	            console.log('tr : '+tr);
 	            $container.html(bbsUI.tbl());
 	            $('#tbody').append(tr);

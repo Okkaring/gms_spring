@@ -4,14 +4,29 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gms.web.mapper.BoardMapper">
 	<resultMap id="respMap" type="com.gms.web.command.RespMap">
+		<id property="seq" column="seq" />
+		<result property="memberId" column="id" />
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<result property="regdate" column="regdate" />
+		<result property="hitcount" column="hitcount" />
 	</resultMap>
+	<resultMap id="article" type="com.gms.web.board.Article">
+		<id property="articleSeq" column="article_seq" />
+		<result property="id" column="id" />
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<result property="regdate" column="regdate" />
+		<result property="hitcount" column="hitcount" />
+	</resultMap>
+	
 	<!-- resultType은 모두 RespMap  -->
 	<!-- parameterType은 모두 Command  -->
 	<insert id="insert" parameterType="com.gms.web.command.Command">
 	</insert>
 	
-	<select id="selectSome" resultType="com.gms.web.command.RespMap" parameterType="com.gms.web.command.Command">
-	
+	<select id="selectSome" resultMap="article" parameterType="com.gms.web.command.Command">
+		select * from board
 	</select>
 	
 	<select id="selectOne" resultType="com.gms.web.command.RespMap" parameterType="com.gms.web.command.Command">
