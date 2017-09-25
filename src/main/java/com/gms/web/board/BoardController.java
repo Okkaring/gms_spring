@@ -30,14 +30,14 @@ public class BoardController {
 		
 		return null;
 	}
-	@RequestMapping("/get/{cate}/list")
+	@RequestMapping("/list/{cate}")
 	public @ResponseBody Map<?,?> list(@PathVariable String cate) {
 		logger.info("******board List {}!!","진입");
 		Map<String,Object> map = new HashMap<>();
 		IListService listService=null;
 		IGetService countService=null;
 		switch(cate) {
-		case "board" :
+		case "articles" :
 			cmd=null;
 			listService =(x)-> {
 					return boardMapper.selectList(cmd);
@@ -61,9 +61,23 @@ public class BoardController {
 		};
 		return map;
 	}
-	public @ResponseBody Map<?,?> get(){
-		
-		return null;
+	@RequestMapping("/get/{cate}/{id}")
+	public @ResponseBody Map<?,?> get(@PathVariable("cate") String cate , @PathVariable("id") String id ){
+		logger.info("******board detail {}!!","진입");
+		System.out.println("들어온 아이디 값: "+ id);
+		Map<String,Object> map = new HashMap<>();
+		/*IGetService detailService=null;
+		switch(cate) {
+		case "articles":
+			cmd=null;
+			detailService =(x)->{
+				return boardMapper.selectList(cmd);
+			};
+			ResultMap r = (ResultMap) detailService.execute(cmd);
+			map.put("detail", r );
+			break;
+		};*/
+		return map;
 	}
 	public @ResponseBody Map<?,?> put(){
 		

@@ -139,8 +139,8 @@ var introUI = {
 	}
 };
 var bbsUI={
-	search : ()=>{
-		var search='<div style="width:80%; margin:50px auto;">'
+		search : ()=>{
+		return '<div style="width:80%; margin:50px auto;">'
 				+'<div id="board" style="width:70%;margin:0 auto;">'
 				+'<div id="search-box" style="width:100%;margin:0 auto;text-align:center;">'
 				+'<select id="search-opt" name="searchOpt" class="form-control" style="width:100px; float:left; margin-right:20px">'
@@ -157,31 +157,29 @@ var bbsUI={
 				+'</div>'
 				+'<div style="width:80%; margin:15px auto; text-align:center;" >'
 				+'<span id="total"> 총 게시글 수: </span>' 
-				+'<input class="btn btn-primary" style="margin-left:300px;" name="write" type="submit"  value="글쓰기!"/>'
+				+'<input id="write-btn" class="btn btn-primary" style="margin-left:300px;" name="write" type="submit"  value="글쓰기!"/>'
 				//+'<label id="write-btn"></label>'
-				+'</div>'
-		return search;
+				+'</div>';
 	},
-	tbl : ()=>{		
-		var tbl= '<table id="tbl" class="table table-hover" style="width:90%; margin:0 auto; text-align:center;">'
-				+'<tr class="hanbit-table tr">'
-		var a=  [{width:'5%',txt:'N°'},
-				{width:'20%',txt:'제 목'},
-				{width:'35%',txt:'내 용'},
-				{width:'15%',txt:'작성자'},
-				{width:'15%',txt:'등록일'},
-				{width:'10%',txt:'조회수'}];
-		$.each(a,(i,j)=>{
-			tbl+='<th style= "width : '+j.width
-				+'; text-align: center;">'+j.txt+'</th>'
-		});
-		tbl+='</tr></thead><tbody id="tbody">';	
-		tbl+='</tbody></table></div>'
-			return tbl;
+		tbl : ()=>{		
+			var tbl= '<table id="tbl" class="table table-hover" style="width:90%; margin:0 auto; text-align:center;">'
+					+'<tr class="hanbit-table tr">'
+					var a=  [{width:'5%',txt:'N°'},
+							{width:'20%',txt:'제 목'},
+							{width:'35%',txt:'내 용'},
+							{width:'15%',txt:'작성자'},
+							{width:'15%',txt:'등록일'},
+							{width:'10%',txt:'조회수'}];
+					$.each(a,(i,j)=>{
+						tbl+='<th style= "width : '+j.width
+							+'; text-align: center;">'+j.txt+'</th>'
+					});
+					tbl+='</tr></thead><tbody id="tbody">';	
+					tbl+='</tbody></table></div>'
+		return tbl;
 	},
-	pagination : ()=>{
-		var pagination=
-				'<nav aria-label="Page navigation" style="width:350px; margin:0 auto;">'
+		pagination : ()=>{
+		return '<nav aria-label="Page navigation" style="width:350px; margin:0 auto;">'
 				+'<ul class="pagination">'
 				+'<li><a onclick=""><span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span></a></li>'
 				+'<li>'
@@ -202,8 +200,50 @@ var bbsUI={
 				+'<li><a><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></a></li>'
 				+'</ul>'
 				+'</nav>';
-		return pagination;
-		}
+	},
+		detail : ()=>{	
+		return '<div cass="page-header" style="margin:20px auto;">'
+				+'<h1 style="display:inline; margin-left:250px;">게시판</h1>'
+				+'<a style="font-size:middle; font-style:italic; margin-left:20px;">목록가기</a>		'
+				+'</div>'
+				+'<div class="container">'
+				+'<div class="row">'
+				+'<div class="col-md-12">'
+				+'<div class="well well-sm">'
+				+'<form class="form-horizontal" method="post">'
+				+'<fieldset>'
+				+'<legend class="text-center header">게시글 쓰기</legend>'
+				+'<div class="form-group">'
+				+'<span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>'
+				+'<div class="col-md-12">'
+				+'<input id="fname" name="title" type="text" placeholder="제 목" class="form-control" />'
+				+'</div>'
+				+'</div>'
+				+'<div class="form-group">'
+				+'<span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>'
+				+'<div class="col-md-12">'
+				+'<input id="lname" name="writer" type="text" placeholder="글쓴이" class="form-control" />'
+				+'</div>'
+				+'</div>'
+				+'<div class="form-group">'
+				+'<span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>'
+				+'<div class="col-md-12">'
+				+'<textarea class="form-control" id="message" name="message" rows="15"></textarea>'
+				+'</div>'
+				+'</div>'
+				+'<div class="form-group">'
+				+'<div class="col-md-12 text-center">'
+				+'<button id="l-Btn" type="submit" style="width:200px" class="btn btn-primary btn-lg">확 인</button>'
+				+'<button id="r-Btn" type="reset" style="width:200px" class="btn btn-dabger btn-lg">취 소</button>'
+				+'</div>'
+				+'</div>'
+				+'</fieldset>'
+				+'</form>'
+				+'</div>'
+				+'</div>'
+				+'</div>'
+				+'</div>';
+	}
 };
 
 var algoUI = {
@@ -216,10 +256,10 @@ var algoUI = {
 		},
 		sort : ()=>{
 			return '<div id="content" style="width: 400px; margin:0 auto; margin-top: 100px;" >'
-			+'<h1>[title]</h1>'
-			+'<span id="input_txt">숫자를 입력: &nbsp;&nbsp;</span>'
-			+'<div id="input_box"></div>'
-			+'<br/>'
-			+'<div id="result_box"></div>';
+				+'<h1>[title]</h1>'
+				+'<span id="input_txt">숫자를 입력: &nbsp;&nbsp;</span>'
+				+'<div id="input_box"></div>'
+				+'<br/>'
+				+'<div id="result_box"></div>';
 		}
 };

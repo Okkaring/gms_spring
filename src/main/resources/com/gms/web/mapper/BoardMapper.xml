@@ -31,6 +31,7 @@
 	</select>
 	
 	<select id="selectOne" resultMap="article" parameterType="com.gms.web.command.Command">
+		
 	</select>
 	
 	<select id="count" resultMap="resultMap" parameterType="com.gms.web.command.Command">
