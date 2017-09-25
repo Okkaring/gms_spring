@@ -67,57 +67,17 @@ meta.index = (()=>{
 		/*-----------------------------------BoardPage UI & Event--------------------------------*/
 			var url = ctx+'/get/board/list';
 			$.getJSON(url,data=>{
-				alert('data msg is '+ data.msg);
-				
+				alert('data total is '+ data.total.count);
 				$navbar.append(introUI.navbar());
 				//meta.navbar.init();
+				$container.html(bbsUI.search());
 				
-/*	            var a=[
-	               {
-	                  a:1,
-	                  b:'헬로ddd',
-	                  c:'봉쥬르',
-	                  d:'니하오',
-	                  e:'2017-09-22',
-	                  f:10
-	               },
-	               {
-	                  a:2,
-	                  b:'헬로dddd',
-	                  c:'봉쥬르',
-	                  d:'니하오',
-	                  e:'2017-09-22',
-	                  f:20
-	               },
-	               {
-	                  a:3,
-	                  b:'헬로dddd',
-	                  c:'봉쥬르',
-	                  d:'니하오',
-	                  e:'2017-09-22',
-	                  f:30
-	               },
-	               {
-	                  a:4,
-	                  b:'헬로',
-	                  c:'봉쥬르',
-	                  d:'니하오',
-	                  e:'2017-09-22',
-	                  f:40
-	               },
-	               {
-	                  a:5,
-	                  b:'헬로',
-	                  c:'봉쥬르',
-	                  d:'니하오',
-	                  e:'2017-09-22',
-	                  f:50
-	               }
-	            ];*/
+				$('#total').html('총 게시글 수: '+data.total.count);
+				
 	            var tr='';
 	            alert('결과 ㅣ: '+ data.result);
 	            $.each(data.list,(i,j)=>{
-	            	tr += '<tr style="border: 1px solid black; height:25px;text-align: center;">'
+	            	tr += '<tr style="height:10px; text-align: center;">'
 	            		   +'<td>'+j.articleSeq+'</td>'
 	            		   +'<td>'+j.title+'</td>'
 	            		   +'<td>'+j.content+'</td>'
@@ -127,8 +87,9 @@ meta.index = (()=>{
 			            +'</tr>';
 			            }); 		
 	            console.log('tr : '+tr);
-	            $container.html(bbsUI.tbl());
+	            $container.append(bbsUI.tbl());
 	            $('#tbody').append(tr);
+	            $container.append(bbsUI.pagination());
 				
 				/*compUI.select('search-opt').addClass('form-control').css({'width':'100px','float':'left','margin-right':'20px'}).appendTo($board);
 				compUI.option().val('writer').text('작성자').appendTo($('#search-opt'));

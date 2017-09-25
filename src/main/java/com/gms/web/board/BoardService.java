@@ -1,4 +1,4 @@
-package com.gms.web.board;
+/*package com.gms.web.board;
 
 import java.util.List;
 
@@ -9,8 +9,9 @@ public interface BoardService {
 		public void post(Object o);			
 		public List<?> list(Object o); 
 		public Object get(Object o);	
+		public String count(Object o);	
 		public void put(Object o);
 		public void delete(Object o);		
 		
-	}
+	}*/
 

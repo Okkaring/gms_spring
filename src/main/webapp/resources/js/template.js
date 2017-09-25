@@ -139,27 +139,31 @@ var introUI = {
 	}
 };
 var bbsUI={
-	tbl : ()=>{
-		var searchBox='<div style="width:80%; margin:100px auto;">'
+	search : ()=>{
+		var search='<div style="width:80%; margin:50px auto;">'
 				+'<div id="board" style="width:70%;margin:0 auto;">'
 				+'<div id="search-box" style="width:100%;margin:0 auto;text-align:center;">'
 				+'<select id="search-opt" name="searchOpt" class="form-control" style="width:100px; float:left; margin-right:20px">'
 				+'<option value="writer">작성자</option>'
 				+'<option value="title">제목</option>'
 				+'</select>'
-				+'<div class="input-group" style="width:50%; float:left; margin-right:20px;">'
+				+'<div class="input-group" style="width:70%; float:left;">'
 				+'<input id="search-txt" type="text" class="form-control" style="width:100%" name="searchTxt" placeholder="작성자 또는 제목을  검색 ++">'
 				+'</div>'
 				+'<input class="btn btn-primary" style="width:100px" name="search" type="submit"  value="검색!"/>'
-				+'<input type="hidden" name="action" value="search"/>'
+				/*+'<input type="hidden" name="action" value="search"/>'
 				+'<input type="hidden" name="pageName" value="list" />'
-				+'<input type="hidden" name="pageNumber" value="1" />'
+				+'<input type="hidden" name="pageNumber" value="1" />'*/
 				+'</div>'
-				+'<div style="width:80%; margin:15px auto;" >'
-				+'<span> 총 게시글 수: </span>'
-				+'<label id="write-btn"></label>'
+				+'<div style="width:80%; margin:15px auto; text-align:center;" >'
+				+'<span id="total"> 총 게시글 수: </span>' 
+				+'<input class="btn btn-primary" style="margin-left:300px;" name="write" type="submit"  value="글쓰기!"/>'
+				//+'<label id="write-btn"></label>'
 				+'</div>'
-		var tbl= '<table id="tbl" class="table table-hover" style="width:90%;margin:0 auto;text-align:center;">'
+		return search;
+	},
+	tbl : ()=>{		
+		var tbl= '<table id="tbl" class="table table-hover" style="width:90%; margin:0 auto; text-align:center;">'
 				+'<tr class="hanbit-table tr">'
 		var a=  [{width:'5%',txt:'N°'},
 				{width:'20%',txt:'제 목'},
@@ -168,26 +172,16 @@ var bbsUI={
 				{width:'15%',txt:'등록일'},
 				{width:'10%',txt:'조회수'}];
 		$.each(a,(i,j)=>{
-			tbl+='<th style=width : '+j.width
+			tbl+='<th style= "width : '+j.width
 				+'; text-align: center;">'+j.txt+'</th>'
 		});
 		tbl+='</tr></thead><tbody id="tbody">';	
 		tbl+='</tbody></table></div>'
 			return tbl;
-		
-		/*
-				+'<tr>'
-				+'<td>112</td>'
-				+'<td>테스트</td>'
-				+'<td>테스트</td>'
-				+'<td>테스트</td>'
-				+'<td>테스트</td>'
-				+'<td>테스트</td>'
-				+'</tr>'
-				+'</table>'
-				+'</div>'
-				
-				+'<nav aria-label="Page navigation" style="width:350px; margin:0 auto;">'
+	},
+	pagination : ()=>{
+		var pagination=
+				'<nav aria-label="Page navigation" style="width:350px; margin:0 auto;">'
 				+'<ul class="pagination">'
 				+'<li><a onclick=""><span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span></a></li>'
 				+'<li>'
@@ -207,7 +201,8 @@ var bbsUI={
 				+'</li>'
 				+'<li><a><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></a></li>'
 				+'</ul>'
-				+'</nav>';*/
+				+'</nav>';
+		return pagination;
 		}
 };
 

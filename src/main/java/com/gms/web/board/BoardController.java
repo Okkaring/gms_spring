@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gms.web.auth.HomeController;
 import com.gms.web.command.Command;
+import com.gms.web.command.ResultMap;
 import com.gms.web.mapper.BoardMapper;
 import com.gms.web.mapper.GradeMapper;
+import com.gms.web.service.IGetService;
 import com.gms.web.service.IListService;
 
 @RestController
@@ -28,22 +30,24 @@ public class BoardController {
 		
 		return null;
 	}
-	
-	
 	@RequestMapping("/get/{cate}/list")
 	public @ResponseBody Map<?,?> list(@PathVariable String cate) {
 		logger.info("******board List {}!!","진입");
 		Map<String,Object> map = new HashMap<>();
-		System.out.println("******board/list : 진입!");
 		IListService listService=null;
+		IGetService countService=null;
 		switch(cate) {
 		case "board" :
 			cmd=null;
 			listService =(x)-> {
-					return boardMapper.selectSome(cmd);
+					return boardMapper.selectList(cmd);
 			};
-			System.out.println("겨어어어엉어어어엉ㄹ과고가ㅗ가ㅗ각"+listService);
+			countService =(x)->{
+				return boardMapper.count(cmd);
+			};
+			ResultMap r=(ResultMap) countService.execute(cmd);
 			map.put("result", "success");
+			map.put("total", r);
 			map.put("list", listService.execute(cmd));
 			break;
 			

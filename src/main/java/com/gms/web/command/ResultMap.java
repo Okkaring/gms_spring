@@ -5,6 +5,6 @@ import org.springframework.stereotype.Component;
 import lombok.Data;
 
 @Component @Data
-public class RespMap {
-	private String memberId, title,content, regdate, hitcount, seq;
+public class ResultMap {
+	private String memberId, count, title, content, regdate, hitcount, seq;
 }
