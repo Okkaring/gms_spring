@@ -31,7 +31,7 @@
 	</select>
 	
 	<select id="selectOne" resultMap="article" parameterType="com.gms.web.command.Command">
-		
+		select * from board where ${column} like ${search}
 	</select>
 	
 	<select id="count" resultMap="resultMap" parameterType="com.gms.web.command.Command">
@@ -39,9 +39,11 @@
 	</select>
 	
 	<update id="update" parameterType="com.gms.web.command.Command">
+		update board set title = #{action}, content=#{page} where article_seq like #{dir};
 	</update>
 	
 	<delete id="delete" parameterType="com.gms.web.command.Command" >
+   		delete from board where article_seq = #{search}
 	</delete>
 	
 </mapper>

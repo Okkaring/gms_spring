@@ -4,17 +4,19 @@ import java.util.*;
 
 import org.springframework.stereotype.Component;
 
+import com.gms.web.command.Command;
 import com.gms.web.command.CommandDTO;
 
 @Component 
 public interface MemberService {
 	public int addMember(Map<?,?> map);			
-	public List<?> list(CommandDTO cmd);					
+	public List<?> list(Command cmd);					
 	public String count();							
-	public StudentDTO findById(CommandDTO cmd);	
-	public List<?> findByName(CommandDTO cmd); 
+	public StudentDTO findById(Command cmd);	
+	public List<?> findByName(Command cmd); 
 	public int modify(MemberDTO bean);
-	public int remove(CommandDTO cmd);		
-	public Map<String, Object> login(CommandDTO cmd);
+	public int remove(Command cmd);		
+	public Map<String, Object> login(Command cmd);
+
 	
 }

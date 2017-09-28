@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.gms.web.command.Command;
 import com.gms.web.command.CommandDTO;
 import com.gms.web.grade.MajorDTO;
 import com.gms.web.mapper.GradeMapper;
@@ -19,7 +20,7 @@ public class MemberServiceImpl implements MemberService{
 	@Autowired MemberMapper mapper;
 	@Autowired GradeMapper gMapper;
 	@Autowired MemberDTO bean;
-	@Autowired CommandDTO cmd;
+	@Autowired Command cmd;
 	@Autowired MajorDTO major;
 	
 	
@@ -37,7 +38,7 @@ public class MemberServiceImpl implements MemberService{
 		return rs;
 	}
 	@Override
-	public List<?> list(CommandDTO cmd) {
+	public List<?> list(Command cmd) {
 		return mapper.selectAll(cmd);
 	}
 	@Override
@@ -49,13 +50,13 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	@Override
-	public StudentDTO findById(CommandDTO cmd) {
+	public StudentDTO findById(Command cmd) {
 		logger.info("***MemberServiceImpl findByName getSearch"+cmd.getSearch());
 		return mapper.selectById(cmd);
 	}
 
 	@Override
-	public List<?> findByName(CommandDTO cmd) {
+	public List<?> findByName(Command cmd) {
 		logger.info("*** MemberSerImpl findByName getSearch? : "+ cmd.getSearch());
 		return mapper.selectByName(cmd);
 	}
@@ -67,12 +68,12 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public int remove(CommandDTO cmd) {
+	public int remove(Command cmd) {
 		logger.info("***cmd에 담은 아이디는?"+cmd.getSearch());
 		return mapper.delete(cmd);
 	}
 	@Override
-	public Map<String, Object> login(CommandDTO cmd) {
+	public Map<String, Object> login(Command cmd) {
 		Map<String, Object> map = new HashMap<>();
 		bean = mapper.login(cmd);
 		String page, message="";

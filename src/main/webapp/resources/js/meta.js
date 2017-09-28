@@ -63,63 +63,145 @@ meta.index = (()=>{
 				});
 			/*Btn3*/
 			compUI.span('bbsBtn3').html('게시판관리').addClass('label label-success').css({'margin-left':'10px'}).appendTo($hBtn).click(()=>{
-				//alert('게시판 가기 ');
-		/*-----------------------------------BoardPage UI & Event--------------------------------*/
-			$.getJSON(ctx+'/list/articles',data=>{
-				$navbar.append(introUI.navbar());
-				$container.html(bbsUI.search());
-				$('#total').html('총 게시글 수: '+data.total.count);
-	            var tr='';
-	            $.each(data.list,(i,j)=>{
-	            	tr += '<tr style="height:10px; text-align: center;">'
-	            		   +'<td>'+j.articleSeq+'</td>'
-	            		   +'<td><a onclick="meta.board.detail('+j.articleSeq+')">'+j.title+'</a></td>'
-	            		   +'<td>'+j.content+'</td>'
-			               +'<td>'+j.id+'</td>'
-			               +'<td>'+j.regdate+'</td>'
-			               +'<td>'+j.hitcount+'</td>'
-			            +'</tr>';
-			            }); 		
-	            console.log('tr : '+tr);
-	            $container.append(bbsUI.tbl());
-	            $('#tbody').append(tr);
-	            $container.append(bbsUI.pagination());
-				$('#write-btn').click(e=>{
-					meta.board.write(e);
-					});
-				});
+				alert('게시판 가기 ');
+				meta.board.list();
 			});
-		/*------------------------------------------End------------------------------------------*/
 		});
 	};
 	return {init:init};
 })();
 meta.board=(()=>{
-	var $container, js, temp, ctx, $content;
+	var $container, js, temp, ctx, $content, $navbar;
 	var init =()=>{
 		$container = $('#container');
 		ctx = $$('x');
 		js = $$('j');
 		temp = js + '/template.js';
+		$navbar =$('#navbar');
+	};
+	var list=x=>{
+		init();
+		/*-----------------------------------BoardPage UI & Event--------------------------------*/
+		$.getJSON(ctx+'/list/articles',data=>{
+			$navbar.append(introUI.navbar());
+			$container.html(bbsUI.search());
+			$('#total').html('총 게시글 수: '+data.total.count);
+            var tr='';
+            $.each(data.list,(i,j)=>{
+            	tr += '<tr style="height:10px; text-align: center;">'
+            		   +'<td>'+j.articleSeq+'</td>'
+            		   +'<td><a onclick="meta.board.detail('+j.articleSeq+')">'+j.title+'</a></td>'
+            		   +'<td>'+j.content+'</td>'
+		               +'<td>'+j.id+'</td>'
+		               +'<td>'+j.regdate+'</td>'
+		               +'<td>'+j.hitcount+'</td>'
+		            +'</tr>';
+		            }); 		
+            console.log('tr : '+tr);
+            $container.append(bbsUI.tbl());
+            $('#tbody').append(tr);
+            $container.append(bbsUI.pagination());
+			$('#write-btn').click(e=>{
+				meta.board.write(e);
+				});
+			});
 	};
 	var detail=x=>{
 		init();
-		alert('선택한 article_seq : '+ x);
+		alert('선택한 시퀀스:' + x);
 		$.getJSON(ctx+'/get/articles/'+x, data=>{
+			var pass="";
+			alert('data 값: '+data.test);
 			$.getScript(temp, ()=>{
 				$container.empty();
 				compUI.div('content').appendTo($container);
 				$content = $('#content');
 				$content.html(bbsUI.detail());
-				$('legend').html('게시글 보기');
+				$('legend').text('게시글 보기');
 				
-				$('#l-Btn').html('수 정 하 고 싶다 !').click(e=>{
+				$('#fname').val(data.detail.title).attr('readonly','true');
+				$('#lname').val(data.detail.id).attr('readonly','true');
+				$('#rname').val(data.detail.regdate).attr('readonly','true');
+				$('#message').text(data.detail.content).attr('readonly','true');
+				
+				alert('아이디가 보이니:  ' + data.detail.id);
+				
+				
+				$('#l-Btn').text('수 정 하 기').click(e=>{
 					e.preventDefault();
-					update(x);
+					$('legend').text('게시글 수정화기');
+					$('#fname').attr('placeholder',data.detail.title).removeAttr('readonly');
+					$('#lname').attr('placeholder',data.detail.id).attr('readonly','true');
+					$('#rname').attr('placeholder',data.detail.regdate).attr('readonly','true');
+					$('#message').text(data.detail.content).removeAttr('readonly');
+					
+					$('#l-Btn').text('수 정 확인ㄱㄱ!').click(e=>{
+						var _seq= data.detail.articleSeq;
+						var _title=$('#fname').val();
+						var _writer=$('#lname').val();
+						var _message=$('#message').val();
+						e.preventDefault();
+						$.ajax({
+							url : ctx + '/put/articles',
+							method : 'post', //@RequestBody 를 썼을땐, post로 써주는 것이 바람직.
+							dataType:'json',
+							data : JSON.stringify({
+								'articleSeq':_seq,
+								'title':_title,
+								'id':_writer,
+								'content':_message
+							}),
+							contentType : 'application/json',
+							success : d=>{
+								alert('ajax 통신 성공: '+d.seq);
+								alert('ajax에서 넘어온 아이디: '+d.id);
+								alert('ajax에서 넘어온 제목: '+d.title);
+								alert('ajax에서 넘어온 메세지: '+d.content);
+								detail(d.seq);
+							},
+							error : (x,s,m)=>{
+								alert('글 수정시 에러 발생'+m);
+							}
+						});
+					});
+					$('#r-Btn').text('취소').attr('id','reset-btn').attr('type','reset').removeAttr('data-toggle').removeAttr('data-target');
 				});
-				$('#r-Btn').html('삭 제').click(e=>{
+				$('#r-Btn').attr('data-toggle','modal')
+				.attr('data-target','#modal')
+				.addClass('btn btn-primary')
+				.html('삭 제')
+				.click(e=>{
 					e.preventDefault();
-					deleteArticle(x);
+					var _seq = data.detail.articleSeq;
+					//var _pass = ;
+					var _writer = $('#lname').val();
+					
+					$('#passConfirm').click(e=>{
+						e.preventDefault();
+						alert('넘어온 정보들 :'+_seq+','+$('#user-pass').val()+','+_writer);
+					$.ajax({
+						url : ctx + '/delete/articles',
+						method : 'post',
+						dataType:'json',
+						data : JSON.stringify({
+							id : _writer,
+							articleSeq : _seq,
+							regdate : $('#user-pass').val()
+							}),
+						contentType : 'application/json',
+						success : d=>{
+							if(d.msg==="success"){
+								alert("글삭제 성공");
+								list();
+							}else{
+								alert("글삭제 실패! 비밀번호가 다릅니다.");
+							}
+						},
+						error : (x,s,m)=>{
+							alert('글 사아아아아악4제시 에러 발생'+m);
+						}
+					});
+				});
 				});
 			});
 		});
@@ -133,6 +215,7 @@ meta.board=(()=>{
 				$content = $('#content');
 				$content.html(bbsUI.detail());
 				$('legend').html('게시글 수정 페이지');
+				
 				$('#l-Btn').html('수 정 ㄱㄱ!').click(()=>{
 					$.getJSON(ctx+'/list/articles',data=>{
 						$navbar.append(introUI.navbar());
@@ -148,7 +231,7 @@ meta.board=(()=>{
 					               +'<td>'+j.regdate+'</td>'
 					               +'<td>'+j.hitcount+'</td>'
 					            +'</tr>';
-					            }); 		
+					            });
 			            console.log('tr : '+tr);
 			            $container.append(bbsUI.tbl());
 			            $('#tbody').append(tr);
@@ -157,13 +240,13 @@ meta.board=(()=>{
 							meta.board.write(e);
 							});
 						});
+					});
 				});
 			});
-		});
-
 	};
 	var deleteArticle=x=>{
-		alert('삭제 클릭');
+		init();
+		alert('삭제 클릭');		
 	};
 	var write=()=>{
 		init();
@@ -174,7 +257,7 @@ meta.board=(()=>{
 			$content.html(bbsUI.detail());
 		});
 	};
-	return {init : init, detail : detail, update : update, write: write};
+	return {init : init, list : list, detail : detail, update : update, write: write, deleteArticle:deleteArticle};
 })();
 /*meta.auth=(()=>{
 	var $wrapper, img, js, temp;

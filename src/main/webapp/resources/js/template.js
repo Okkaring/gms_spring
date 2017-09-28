@@ -151,14 +151,16 @@ var bbsUI={
 				+'<input id="search-txt" type="text" class="form-control" style="width:100%" name="searchTxt" placeholder="작성자 또는 제목을  검색 ++">'
 				+'</div>'
 				+'<input class="btn btn-primary" style="width:100px" name="search" type="submit"  value="검색!"/>'
-				/*+'<input type="hidden" name="action" value="search"/>'
-				+'<input type="hidden" name="pageName" value="list" />'
-				+'<input type="hidden" name="pageNumber" value="1" />'*/
+				/*
+				 * +'<input type="hidden" name="action" value="search"/>' +'<input
+				 * type="hidden" name="pageName" value="list" />' +'<input
+				 * type="hidden" name="pageNumber" value="1" />'
+				 */
 				+'</div>'
 				+'<div style="width:80%; margin:15px auto; text-align:center;" >'
 				+'<span id="total"> 총 게시글 수: </span>' 
 				+'<input id="write-btn" class="btn btn-primary" style="margin-left:300px;" name="write" type="submit"  value="글쓰기!"/>'
-				//+'<label id="write-btn"></label>'
+				// +'<label id="write-btn"></label>'
 				+'</div>';
 	},
 		tbl : ()=>{		
@@ -226,6 +228,11 @@ var bbsUI={
 				+'</div>'
 				+'</div>'
 				+'<div class="form-group">'
+				+'<div class="col-md-12">'
+				+'<input id="rname" name="regdate" type="text" placeholder="등록일" class="form-control" />'
+				+'</div>'
+				+'</div>'
+				+'<div class="form-group">'
 				+'<span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>'
 				+'<div class="col-md-12">'
 				+'<textarea class="form-control" id="message" name="message" rows="15"></textarea>'
@@ -233,8 +240,8 @@ var bbsUI={
 				+'</div>'
 				+'<div class="form-group">'
 				+'<div class="col-md-12 text-center">'
-				+'<button id="l-Btn" type="submit" style="width:200px" class="btn btn-primary btn-lg">확 인</button>'
-				+'<button id="r-Btn" type="reset" style="width:200px" class="btn btn-dabger btn-lg">취 소</button>'
+				+'<button id="l-Btn" type="submit" style="width:200px;margin-right: 10px;" class="btn btn-primary btn-lg">확 인</button>'
+				+'<button id="r-Btn" type="reset" style="width:200px;margin-right: 10px;" class="btn btn-dabger btn-lg">취 소</button>'
 				+'</div>'
 				+'</div>'
 				+'</fieldset>'
@@ -242,7 +249,29 @@ var bbsUI={
 				+'</div>'
 				+'</div>'
 				+'</div>'
-				+'</div>';
+				+'</div>'
+				+'<div class="modal fade alert" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">'
+				+'<div class="modal-dialog">'
+				+'<div class="modal-content">'
+				+'<div class="modal-header">'
+				+'<button type="button" class="close" data-dismiss="modal">'
+				+'<span aria-hidden="true">x</span>'
+				+'<span class="sr-only">Close</span></button>'
+				+'<h3 class="modal-title" id="modalLabel">정말 삭제하시겠습니까?</h3>'
+				+'</div>'
+				+'<div class="modal-body">'
+				+'<form>'
+				+'<div class="form-group">'
+				+'<label for="inputPass">Password</label>'
+				+'<input type="password" class="form-control" id="user-pass" placeholder="Enter Password">'
+				+'</div>'
+				+'<button id="passConfirm" type="submit" style="width:200px;" class="btn btn-primary center-block">확 인 </button>'
+				+'</form>'
+				+'</div>'
+				+'</div>'
+				+'</div>'
+				+'</div>'
+				;
 	}
 };
 

@@ -11,53 +11,70 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="${path.css}/meta.css" />
 	<script src="${path.js}/meta.js"></script>
+	
+	<style type="text/css">
+	.main-menu-box{background-color: transparent !important;
+				    border-bottom: none !important;
+				    position: absolute !important;
+				    top: 0px !important;
+				    left: 0px !important;
+				    right: 0px !important;}
+	.main-menu-table{display: table !important;width: 100% !important;}
+	.logo-box{width:5%; height:64px; margin:0 auto; float:left;}
+	.logo-outer{display: table;width: 100%;height: 100%;}
+	.logo-inner{display: table-cell;vertical-align: middle;text-align: center;}
+	.logo-center{position:relative; display:inline-block; padding:1em;}
+	.main-menu-blank{display: table-cell !important;width: 70% !important;vertical-align: middle !important;}	
+	.main-menu-navbox{display: table-cell !important;vertical-align: middle !important;text-align: right;}
+	.main-menu-element{float:left; height:64px;line-height: 64px !important;padding: 0 16px !important;}
+	.main-menu-btn{background: transparent !important;
+					border-top-color: initial;
+					border-top-style: none;
+					border-top-width: initial;
+					border-right-color: initial;
+					border-right-style: none;
+				    border-right-width: initial;
+				    border-bottom-color: initial;
+				    border-bottom-style: none;
+				    border-bottom-width: initial;
+				    border-left-color: initial;
+				    border-left-style: none;
+				    border-left-width: initial;
+				    border-image-source: initial;
+				    border-image-slice: initial;
+				    border-image-width: initial;
+				    border-image-outset: initial;
+				    border-image-repeat: initial;}
+	</style>
 </head>
 <body>
-<div class="page-header">
-	<h1 style="display:inline">게시판</h1>
-	<a style="font-size:large;">목록가기</a>		
-</div>
-<div class="container">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="well well-sm">
-				<form class="form-horizontal" method="post">
-					<fieldset>
-						<legend class="text-center header">게시글 쓰기</legend>
-						<div class="form-group">
-							<span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-							<div class="col-md-12">
-								<input id="fname" name="title" type="text" placeholder="제 목" class="form-control" />
-							</div>
-						</div>
-						<div class="form-group">
-							<span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-							<div class="col-md-12">
-								<input id="lname" name="writer" type="text" placeholder="글쓴이" class="form-control" />
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
-							<div class="col-md-12">
-								<textarea class="form-control" id="message" name="message" rows="15"></textarea>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-md-12 text-center">
-								<button type="submit" style="width:200px" class="btn btn-primary btn-lg">확 인</button>
-								<button type="reset" style="width:200px" class="btn btn-dabger btn-lg">취 소</button>
-							</div>
-						</div>	
-					</fieldset>
-				</form>
+	<div class="main-menu-box">
+		<div class="main-menu-table">
+		<div id="logo-box" class="logo-box">
+			<div class="logo-outer">
+				<div class="logo-inner">
+					<div class="logo-center">
+						<img src= "${path.img}/logo-nav-color.png" style="width:34px;"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="main-menu-blank"></div>
+			<div class="main-menu-navbox">
+				<div class="main-menu-element">
+					<button class="main-menu-btn"><span>호스팅 하기</span></button>
+				</div>
+				<div class="main-menu-element">
+					<button class="main-menu-btn"><span>도움말</span></button>
+				</div>
+				<div class="main-menu-element"><a href="">회원가입</a></div>
+				<div class="main-menu-element"><a href="">로그인</a></div>
 			</div>
 		</div>
 	</div>
-</div>
 </body>
-
+<div id="content"></div>
 <script>
-meta.common.init('${path.ctx}');
+
 </script>
 </html>
